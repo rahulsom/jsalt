@@ -21,6 +21,10 @@ plugins {
 
 apply plugin: 'java'
 apply plugin: 'groovy'
+apply from: 'gradle/grooscript.gradle'
+apply from: 'gradle/karma.gradle'
+apply from: 'gradle/assets.gradle'
+apply from: 'gradle/bower.gradle'
 
 repositories {
   jcenter()
@@ -32,82 +36,5 @@ dependencies {
   testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
 }
 
-bower {
-  'lodash'('4.3.0')
-}
-
-grooscript {
-  source = ['src/main/groovy'] //Sources to be converted(List), default is ['src/main/groovy']
-  destination = 'build/generated/js' //Target directory for js files, default is 'src/main/webapp/js/app'
-  classpath = ['src/main/groovy'] //Needed classpath's to compile source files(List), default is ['src/main/groovy']
-  customization = null //Customization in files, it's a closure, as for example { -> ast(groovy.transform.TypeChecked) }
-  initialText = '//Grooscript converted file'
-  initialText = '//End converted file'
-  recursive = true //Default is false
-  mainContextScope = ['$'] //Variables available in main scope (List), default is null
-  addGsLib = 'grooscript' //Include a grooscript js lib in the result, default is null
-  includeDependencies = true //Include conversion of dependency files, default is false
-}
-
-assets {
-  minifyJs = true
-  minifyCss = true
-  enableSourceMaps = true
-
-  configOptions = [
-      typeScript: [
-          module:'commonjs',
-          target:'es5',
-          experimentalDecorators:true
-      ]
-  ]
-
-  minifyOptions = [
-      languageMode: 'ES6',
-      targetLanguage: 'ES5',
-      optimizationLevel: 'SIMPLE',
-      angularPass: true
-  ]
-
-  includes = ['facotiral.es5.js']
-  excludes = ['bower/**']
-
-  // Can add custom asset locations (directories or individual jar files)
-  from 'src/assets/bower'
-  from 'build/generated/js'
-  // from '/path/to/file.jar'
-}
-
-karma {
-  basePath = projectDir
-
-  colors = true
-  profile 'default'
-
-  browsers = ['PhantomJS']
-  frameworks = ['jasmine']
-  reporters = ['junit', 'progress', 'coverage']
-
-  preprocessors = [
-      'build/assets/**/*.js': ['coverage'],
-  ]
-
-  junitReporter = [outputDir: 'build/test-results']
-
-  coverageReporter = [
-      dir      : 'build/coverage',
-      reporters: [
-          [type: 'html', subdir: 'html'],
-          [type: 'cobertura', subdir: '.'],
-      ]
-  ]
-
-  files = [
-      "build/assets/bower/**/**",
-      "build/assets/**/!(*.spec).unminified.js",
-      "build/assets/**/*.spec.unminified.js"
-  ]
-
-}
 task demo << {}
 demo.dependsOn 'test', 'convert', 'assetClean', 'assetCompile', 'karmaRun', 'asciidoctor'

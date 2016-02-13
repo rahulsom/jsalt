@@ -1,0 +1,28 @@
+assets {
+  minifyJs = true
+  minifyCss = true
+  enableSourceMaps = true
+
+  configOptions = [
+      typeScript: [
+          module:'commonjs',
+          target:'es5',
+          experimentalDecorators:true
+      ]
+  ]
+
+  minifyOptions = [
+      languageMode: 'ES6',
+      targetLanguage: 'ES5',
+      optimizationLevel: 'SIMPLE',
+      angularPass: true
+  ]
+
+  includes = ['facotiral.es5.js']
+  excludes = ['bower/**']
+
+  // Can add custom asset locations (directories or individual jar files)
+  from 'src/assets/bower'
+  from 'build/generated/js'
+  // from '/path/to/file.jar'
+}

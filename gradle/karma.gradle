@@ -1,0 +1,33 @@
+karma {
+  basePath = projectDir
+
+  colors = true
+  profile 'default'
+
+  browsers = ['PhantomJS']
+  frameworks = ['jasmine']
+  reporters = ['junit', 'progress', 'coverage']
+
+  preprocessors = [
+      'build/assets/**/*.js': ['coverage'],
+  ]
+
+  junitReporter = [outputDir: 'build/test-results']
+
+  coverageReporter = [
+      dir      : 'build/coverage',
+      reporters: [
+          [type: 'html', subdir: 'html'],
+          [type: 'cobertura', subdir: '.'],
+      ]
+  ]
+
+  files = [
+      "build/assets/bower/**/**",
+      "build/assets/**/!(*.spec).unminified.js",
+      "build/assets/**/*.spec.unminified.js"
+  ]
+
+}
+
+karmaRun.dependsOn 'assetCompile'

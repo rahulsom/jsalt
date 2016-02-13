@@ -124,3 +124,15 @@ include::../test/groovy/FactorialGroovySpec.groovy[]
 <1> We are using Spock to test the code
 <2> The assertions are much nicer than jasmine
 
+=== scala.js
+TODO
+
+=== Purescript
+TODO
+
+=== Clojurescript
+TODO
+
+=== Typescript
+TODO
+
