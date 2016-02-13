@@ -1,0 +1,101 @@
+= JS/Alt
+Rahul Somasunderam
+:toc: left
+:source-highlighter: highlightjs
+:icons: font
+
+In talking to a lot of Javascript developers over the course of the last few months, I learnt that most hated the limits placed on them by javascript.
+I found myself cursing every time I needed to do some very basic tasks.
+Most of this led back to a rather old decision to not use transpilers when we started our very first SPA.
+This project is an attempt to fix that situation.
+
+== The problems
+
+* Javascript pretends to be a functional language
+* Javascript pretends to be an object oriented language
+* Javascript was introduced in 1995, and has never broken backwards compatibility.
+    _Even when bad decisions were made._
+* Javascript has [line-through]#optional# **no** typing.
+
+== The use cases
+
+. Calling utility methods that accept functions as arguments
+. Creating "class"es and accessing static and instance methods
+. Dealing with some javascript eccentricities
+. Managing types
+
+== The Contenders
+
+=== Classic Javascript (ES 5)
+
+[source,javascript]
+----
+include::../assets/app/factorialClassic.js[]
+----
+<1> This is a tip of the hat to the weird history of javascript and the reluctance to do away with bad implementations.
+As we'll later see, this is not as strict as we want it to be.
+<2> This is a secret handshake between the developer and the browser that **this** is a `class`.
+<3> This is the constructor, and it does nothing, but it can be modified in several steps below.
+<4> The `prototype` feels like you're mucking with a meta object. Indeed, that's how javascript wants you to deal with
+classes.
+<5> As you've probably noticed by now, there are no types to parameters or return values.
+Javascript does not impose any restrictions inspite of having classes we've seen earlier.
+The solution to getting type information in the IDE is use of JSDoc.
+You might be tempted to think there is Haskell style type inference.
+Do not fall for that trap. Things can go from bad to worse pretty soon once a method is called incorrectly.
+<6> There is no sane definition of `this` since classes are just functions.
+So what `this` means depends on where it is used. In this case, it's an instance of `FactorialUtilClassic`.
+An experienced javascript developer would know this by instinct, but still fall for it's traps.
+<7> Here we're using lodash or underscore or some library that offers a functional style of programming.
+<8> This is the boilerplate required to map `x` to `x!`
+<9> If you forget the `return` keyword, the function is assumed to return `void`. There is no warning.
+<10> The only way to construct expressions is concatenation.
+<11> This is a static function. The clue is, there's no `prototype`.
+<12> `this` means the `class` over here.
+<13> We return the function from <3> over here. That is the instance returned to the call `new FactorialUtilClassic`.
+
+[source,javascript]
+----
+include::../assets/app/factorialClassic.spec.js[]
+----
+
+=== Modern Javascript (ES 6)
+
+[source,js]
+----
+include::../assets/app/factorialModern.es6[]
+----
+<1> There is native support for classes.
+<2> Arrow functions look a lot like Lambda Calculus, and have a saner implementation of `this`
+<3> You have expressions with a style similar to groovy. You need to use backticks though.
+<4> There is support for `static` members in classes.
+<5> You still use `this` inside static members.
+
+[source,js]
+----
+include::../assets/app/factorialModern.spec.js[]
+----
+
+=== Coffeescript
+
+[source,coffeescript]
+----
+include::../assets/app/factorialCoffee.coffee[]
+----
+<1> This is based on ES5, so you still need to enforce strict mode
+<2> It is based on Ruby and Python so indents matter and comments are `#` based
+<3> You have native classes
+<4> This is a function defined as a property, which in case of class is a public method
+<5> It is not immediately clear in this case, but if is not a statement, but an expression in coffeescript.
+<6> `@` is used to mapped to `this` or `this.` in javascript. Makes for concise code more than you would think.
+<7> There is still a lambda-esque function here, but coffeescript functions always remind you of lambdas.
+<8> Expressions are based on `#` like Ruby too
+<9> The last statement is always a return
+<10> Depending on the implementation of Coffeescript, the whole function could be inside of an anonymous function or not.
+So if you want to export the class, you better explicitly do that.
+
+[source,coffeescript]
+----
+include::../assets/app/factorialCoffee.spec.coffee[]
+----
+The test is perhaps where coffeescript excels in demonstrating it's conciseness.
