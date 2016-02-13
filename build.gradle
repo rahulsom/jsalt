@@ -16,23 +16,37 @@ plugins {
   id 'com.craigburke.bower-installer' version '2.5.1'
   id 'com.craigburke.karma' version '1.4.3'
   id 'com.bertramlabs.asset-pipeline' version '2.6.7'
+  id "org.grooscript.conversion" version "1.2.2"
 }
 
 apply plugin: 'java'
+apply plugin: 'groovy'
 
 repositories {
   jcenter()
 }
 
 dependencies {
-  compile 'org.slf4j:slf4j-api:1.7.13'
-
-  testCompile 'junit:junit:4.12'
-
+  compile 'org.codehaus.groovy:groovy-all:2.4.4'
+  compile 'org.grooscript:grooscript:1.2.2'
+  testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
 }
 
 bower {
   'lodash'('4.3.0')
+}
+
+grooscript {
+  source = ['src/main/groovy'] //Sources to be converted(List), default is ['src/main/groovy']
+  destination = 'build/generated/js' //Target directory for js files, default is 'src/main/webapp/js/app'
+  classpath = ['src/main/groovy'] //Needed classpath's to compile source files(List), default is ['src/main/groovy']
+  customization = null //Customization in files, it's a closure, as for example { -> ast(groovy.transform.TypeChecked) }
+  initialText = '//Grooscript converted file'
+  initialText = '//End converted file'
+  recursive = true //Default is false
+  mainContextScope = ['$'] //Variables available in main scope (List), default is null
+  addGsLib = 'grooscript' //Include a grooscript js lib in the result, default is null
+  includeDependencies = true //Include conversion of dependency files, default is false
 }
 
 assets {
@@ -60,6 +74,7 @@ assets {
 
   // Can add custom asset locations (directories or individual jar files)
   from 'src/assets/bower'
+  from 'build/generated/js'
   // from '/path/to/file.jar'
 }
 
@@ -94,3 +109,5 @@ karma {
   ]
 
 }
+task demo << {}
+demo.dependsOn 'test', 'convert', 'assetClean', 'assetCompile', 'karmaRun', 'asciidoctor'

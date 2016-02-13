@@ -7,7 +7,7 @@ Rahul Somasunderam
 In talking to a lot of Javascript developers over the course of the last few months, I learnt that most hated the limits placed on them by javascript.
 I found myself cursing every time I needed to do some very basic tasks.
 Most of this led back to a rather old decision to not use transpilers when we started our very first SPA.
-This project is an attempt to fix that situation.
+This project is an attempt to find out what we could be doing instead of fighting hard against javascript.
 
 == The problems
 
@@ -23,6 +23,12 @@ This project is an attempt to fix that situation.
 . Creating "class"es and accessing static and instance methods
 . Dealing with some javascript eccentricities
 . Managing types
+
+== The format
+
+You'll see code that is picked from tested examples over here.
+There will be callouts that point out interesting things.
+Some are positive, some are negative, while others are just plain interesting.
 
 == The Contenders
 
@@ -99,3 +105,22 @@ So if you want to export the class, you better explicitly do that.
 include::../assets/app/factorialCoffee.spec.coffee[]
 ----
 The test is perhaps where coffeescript excels in demonstrating it's conciseness.
+
+=== Grooscript
+[source,groovy]
+----
+include::../main/groovy/FactorialGroovy.groovy[]
+----
+<1> Within Groovy code, you can use Static compilation and type checking
+<2> You can have typed variables
+<3> Typed functions
+<4> There is no `this` scattered in a confusing way. But the implementation of `this` is as sane as `groovy`.
+<5> Some ASTs like `@Singleton` are not allowed
+
+[source,groovy]
+----
+include::../test/groovy/FactorialGroovySpec.groovy[]
+----
+<1> We are using Spock to test the code
+<2> The assertions are much nicer than jasmine
+
