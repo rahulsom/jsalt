@@ -1,3 +1,5 @@
+apply plugin: 'groovy'
+
 grooscript {
   source = ['src/main/groovy'] //Sources to be converted(List), default is ['src/main/groovy']
   destination = 'build/generated/js' //Target directory for js files, default is 'src/main/webapp/js/app'
@@ -12,3 +14,4 @@ grooscript {
 }
 
 assetCompile.dependsOn 'convert'
+convert.dependsOn 'compileGroovy'

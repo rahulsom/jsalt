@@ -125,7 +125,28 @@ include::../test/groovy/jsalt/groovy/FactorialGroovySpec.groovy[]
 <2> The assertions are much nicer than jasmine
 
 === scala.js
-TODO
+[source,scala]
+----
+include::../main/scala/FactorialScala.scala[]
+----
+<1> `if` is an expression, not a statement.
+<2> Also function bodies without `{}` are common.
+<3> Since we're using recursion, we need to be very clear about the signature inspite of advanced type inference.
+<4> This is a basic demo of type inference.
+<5> This is a method body with `{}`.
+<6> Also Scala infers the return of this method. It is not `Object`.
+<7> ScalaJs is very aggressive in optimizing generated javascript. We need to tell it what we will be using from
+  outside unless we have a `JSApp` with a `main` method.
+<8> More demo of advanced type inference.
+<9> This looks like an expression, but it is a function.
+
+[source,scala]
+----
+include::../test/scala/FactorialScalaSpec.scala[]
+----
+<1> This is commented because it is implicit, but I've put it there to show by default scala collections are immutable.
+<2> We need this because we're trying to play well with the other test written in Spock.
+<3> Assertions are almost as elegant as Spock.
 
 === Purescript
 TODO

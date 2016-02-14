@@ -1,0 +1,57 @@
+apply plugin: 'scala'
+
+configurations {
+  scalajsc
+  scalajsl
+}
+
+dependencies {
+  scalajsc 'org.scala-js:scalajs-compiler_2.11.4:0.6.7'
+  scalajsl 'org.scala-js:scalajs-cli_2.11:0.6.7'
+  scalajsl 'org.scala-lang:scala-compiler:2.11.4'
+  scalajsl 'org.scala-lang:scala-library:2.11.4'
+  scalajsl  'org.scala-js:scalajs-library_2.11:0.6.7'
+}
+
+URI scalaJsLib(String text, Configuration configuration) {
+  configuration*.toURI().find {it.toString().contains(text)}
+}
+
+tasks.withType(ScalaCompile) {
+  it.outputs.dir file("${buildDir}/classes/main")
+  def pluginDef = scalaJsLib('scalajs-compiler', configurations.scalajsc)
+  scalaCompileOptions.additionalParameters = ["-Xplugin:${pluginDef}"]
+}
+
+
+task scalaJsLd() {
+
+  def std = file(configurations.scalajsl*.toURI().find {it.toString().contains('scalajs-library')})
+  def classesDir = "${buildDir}/classes/main"
+  def genJs = "${buildDir}/generated/js"
+  outputs.dir file(genJs)
+  inputs.dir file(classesDir)
+  dependsOn 'compileScala'
+
+  doLast {
+    if (!(file(genJs).exists())) {
+      file(genJs).mkdirs()
+    }
+
+    javaexec {
+      classpath sourceSets.main.runtimeClasspath
+      classpath configurations.runtime
+      classpath configurations.scalajsl
+      main = 'org.scalajs.cli.Scalajsld'
+      args = [
+          '--stdlib', std,
+          "-s",
+          "-m", "ECMAScript51Global",
+          "-o", "$genJs/${project.name}.scala.js",
+          classesDir
+      ]
+      println args
+
+    }
+  }
+}
