@@ -1,0 +1,35 @@
+= JS/Alt
+Rahul Somasunderam
+
+This is a comparison of various javascript alternatives for some very small problems. The idea is if we fairly
+compare all these languages, we can choose a suitable language for a given purpose.
+
+Knowledge of a language is an important metric, and for every team that's comparing these languages, this would
+yield different results. But turning a blind eye to the alternatives is akin to
+
+image::https://hakanforss.files.wordpress.com/2014/03/are-you-too-busy-to-improve2.png[]
+Image from https://hakanforss.wordpress.com/2014/03/10/are-you-too-busy-to-improve/
+
+== Problems solved
+
+- [x] Creating a singleton to compute the first N factorials of a number. This is a kludgy solution, but the
+  objective is not creating the cleanest solution; it is to show how a language handles different problems.
+- [ ] More problems
+
+== Languages Used
+
+- [x] Javascript ES5
+- [x] Javascript ES6
+- [x] Coffeescript
+- [x] Grooscript
+- [x] Scala.js
+- [ ] Purescript
+- [ ] Clojurescript
+- [ ] Typescript
+
+== Contributing
+
+If you want to add a problem & solution, please go ahead and add it in with for all languages present and send a PR.
+
+If you want to add a language that you think needs to be given fair representation, please go ahead and add a solution
+to all problems with unit tests. and link them into the asciidoc.
