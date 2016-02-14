@@ -1,3 +1,4 @@
+package jsalt.groovy
 import groovy.transform.CompileStatic
 import groovy.transform.TypeChecked
 

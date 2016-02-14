@@ -109,7 +109,7 @@ The test is perhaps where coffeescript excels in demonstrating it's conciseness.
 === Grooscript
 [source,groovy]
 ----
-include::../main/groovy/FactorialGroovy.groovy[]
+include::../main/groovy/jsalt/groovy/FactorialGroovy.groovy[]
 ----
 <1> Within Groovy code, you can use Static compilation and type checking
 <2> You can have typed variables
@@ -119,7 +119,7 @@ include::../main/groovy/FactorialGroovy.groovy[]
 
 [source,groovy]
 ----
-include::../test/groovy/FactorialGroovySpec.groovy[]
+include::../test/groovy/jsalt/groovy/FactorialGroovySpec.groovy[]
 ----
 <1> We are using Spock to test the code
 <2> The assertions are much nicer than jasmine
