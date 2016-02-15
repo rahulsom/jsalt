@@ -12,9 +12,9 @@ Image from https://hakanforss.wordpress.com/2014/03/10/are-you-too-busy-to-impro
 
 == Problems solved
 
-- [x] Creating a singleton to compute the first N factorials of a number. This is a kludgy solution, but the
-  objective is not creating the cleanest solution; it is to show how a language handles different problems.
-- [ ] More problems
+- [x] Computing the sine of an angle using Taylor Series
+- [ ] Templating strings
+- [ ] Managing types
 
 == Languages Used
 

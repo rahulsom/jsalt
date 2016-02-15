@@ -4,7 +4,10 @@ grooscript {
   source = ['src/main/groovy'] //Sources to be converted(List), default is ['src/main/groovy']
   destination = 'build/generated/js' //Target directory for js files, default is 'src/main/webapp/js/app'
   classpath = ['src/main/groovy'] //Needed classpath's to compile source files(List), default is ['src/main/groovy']
-  customization = null //Customization in files, it's a closure, as for example { -> ast(groovy.transform.TypeChecked) }
+  customization = { ->
+    ast(groovy.transform.TypeChecked)
+    ast(groovy.transform.CompileStatic)
+  }
   initialText = '//Grooscript converted file'
   initialText = '//End converted file'
   recursive = true //Default is false

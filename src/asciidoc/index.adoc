@@ -36,7 +36,7 @@ Some are positive, some are negative, while others are just plain interesting.
 
 [source,javascript]
 ----
-include::../assets/app/factorialClassic.js[]
+include::../assets/app/TaylorClassic.js[]
 ----
 <1> This is a tip of the hat to the weird history of javascript and the reluctance to do away with bad implementations.
 As we'll later see, this is not as strict as we want it to be.
@@ -53,40 +53,38 @@ Do not fall for that trap. Things can go from bad to worse pretty soon once a me
 So what `this` means depends on where it is used. In this case, it's an instance of `FactorialUtilClassic`.
 An experienced javascript developer would know this by instinct, but still fall for it's traps.
 <7> Here we're using lodash or underscore or some library that offers a functional style of programming.
-<8> This is the boilerplate required to map `x` to `x!`
+<8> This is the boilerplate required to call reduce
 <9> If you forget the `return` keyword, the function is assumed to return `void`. There is no warning.
-<10> The only way to construct expressions is concatenation.
-<11> This is a static function. The clue is, there's no `prototype`.
-<12> `this` means the `class` over here.
-<13> We return the function from <3> over here. That is the instance returned to the call `new FactorialUtilClassic`.
+<10> This is a static function. The clue is, there's no `prototype`.
+<11> `this` means the `class` over here.
+<12> We return the function from <3> over here. That is the instance returned to the call `new FactorialUtilClassic`.
 
 [source,javascript]
 ----
-include::../assets/app/factorialClassic.spec.js[]
+include::../assets/app/TaylorClassic.spec.js[]
 ----
 
 === Modern Javascript (ES 6)
 
 [source,js]
 ----
-include::../assets/app/factorialModern.es6[]
+include::../assets/app/TaylorModern.es6[]
 ----
 <1> There is native support for classes.
 <2> Arrow functions look a lot like Lambda Calculus, and have a saner implementation of `this`
-<3> You have expressions with a style similar to groovy. You need to use backticks though.
-<4> There is support for `static` members in classes.
-<5> You still use `this` inside static members.
+<3> There is support for `static` members in classes.
+<4> You still use `this` inside static members.
 
 [source,js]
 ----
-include::../assets/app/factorialModern.spec.js[]
+include::../assets/app/TaylorModern.spec.js[]
 ----
 
 === Coffeescript
 
 [source,coffeescript]
 ----
-include::../assets/app/factorialCoffee.coffee[]
+include::../assets/app/TaylorCoffee.coffee[]
 ----
 <1> This is based on ES5, so you still need to enforce strict mode
 <2> It is based on Ruby and Python so indents matter and comments are `#` based
@@ -95,21 +93,20 @@ include::../assets/app/factorialCoffee.coffee[]
 <5> It is not immediately clear in this case, but if is not a statement, but an expression in coffeescript.
 <6> `@` is used to mapped to `this` or `this.` in javascript. Makes for concise code more than you would think.
 <7> There is still a lambda-esque function here, but coffeescript functions always remind you of lambdas.
-<8> Expressions are based on `#` like Ruby too
-<9> The last statement is always a return
-<10> Depending on the implementation of Coffeescript, the whole function could be inside of an anonymous function or not.
+<8> The last statement is always a return
+<9> Depending on the implementation of Coffeescript, the whole function could be inside of an anonymous function or not.
 So if you want to export the class, you better explicitly do that.
 
 [source,coffeescript]
 ----
-include::../assets/app/factorialCoffee.spec.coffee[]
+include::../assets/app/TaylorCoffee.spec.coffee[]
 ----
 The test is perhaps where coffeescript excels in demonstrating it's conciseness.
 
 === Grooscript
 [source,groovy]
 ----
-include::../main/groovy/jsalt/groovy/FactorialGroovy.groovy[]
+include::../main/groovy/jsalt/groovy/TaylorGroovy.groovy[]
 ----
 <1> Within Groovy code, you can use Static compilation and type checking
 <2> You can have typed variables
@@ -119,30 +116,29 @@ include::../main/groovy/jsalt/groovy/FactorialGroovy.groovy[]
 
 [source,groovy]
 ----
-include::../test/groovy/jsalt/groovy/FactorialGroovySpec.groovy[]
+include::../test/groovy/jsalt/groovy/TaylorGroovySpec.groovy[]
 ----
 <1> We are using Spock to test the code
 <2> The assertions are much nicer than jasmine
+<3> Jasmine's `toBeCloseTo` is missed
 
 === scala.js
 [source,scala]
 ----
-include::../main/scala/FactorialScala.scala[]
+include::../main/scala/TaylorScala.scala[]
 ----
 <1> `if` is an expression, not a statement.
 <2> Also function bodies without `{}` are common.
 <3> Since we're using recursion, we need to be very clear about the signature inspite of advanced type inference.
-<4> This is a basic demo of type inference.
-<5> This is a method body with `{}`.
-<6> Also Scala infers the return of this method. It is not `Object`.
-<7> ScalaJs is very aggressive in optimizing generated javascript. We need to tell it what we will be using from
+<4> This is a method body with `{}`.
+<5> Also Scala infers the return of this method. It is not `Object`.
+<6> ScalaJs is very aggressive in optimizing generated javascript. We need to tell it what we will be using from
   outside unless we have a `JSApp` with a `main` method.
-<8> More demo of advanced type inference.
-<9> This looks like an expression, but it is a function.
+<7> More demo of advanced type inference.
 
 [source,scala]
 ----
-include::../test/scala/FactorialScalaSpec.scala[]
+include::../test/scala/TaylorScalaSpec.scala[]
 ----
 <1> This is commented because it is implicit, but I've put it there to show by default scala collections are immutable.
 <2> We need this because we're trying to play well with the other test written in Spock.
