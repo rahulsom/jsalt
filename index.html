@@ -517,59 +517,58 @@ Some are positive, some are negative, while others are just plain interesting.</
 /**
  * A factory that offers factorial methods
  */
-var FactorialUtilClassic = (function () { <i class="conum" data-value="2"></i><b>(2)</b>
-    function FactorialUtilClassic() { <i class="conum" data-value="3"></i><b>(3)</b>
-    }
+var TaylorClassic = (function () { <i class="conum" data-value="2"></i><b>(2)</b>
+    function TaylorClassic() {} <i class="conum" data-value="3"></i><b>(3)</b>
+
+    /**
+     * Computes the p-th power of num
+     * @param num {number} the number
+     * @param p {int} the number
+     * @return {number} the power
+     */
+    TaylorClassic.prototype.pow = function(num, p) { <i class="conum" data-value="4"></i><b>(4)</b>
+        if (p === 0) {
+            return 1;
+        } else if (p &gt; 0) {
+            return num * this.pow(num, p - 1);
+        } else {
+            return 1 / num * this.pow(num, p + 1);
+        }
+    };
 
     /**
      * Computes the factorial of a number
-     * @param x {int} the number
+     * @param x {int} the number <i class="conum" data-value="5"></i><b>(5)</b>
      * @return {int} the factorial
      */
-    FactorialUtilClassic.prototype.factorial = function factorial(x) { <i class="conum" data-value="4"></i><b>(4)</b>
-        return x &lt;= 0 ? 1 : x * this.factorial(x - 1);
+    TaylorClassic.prototype.fact = function fact(x) {
+        return x &lt;= 0 ? 1 : x * this.fact(x - 1);
     };
 
     /**
-     * Returns the first n factorials starting with 1
-     * @param len {int} the number factorials to return <i class="conum" data-value="5"></i><b>(5)</b>
-     * @return {Array&lt;int&gt;}the list of factorials
+     * Computes the sine of an angle
+     * @param x {number} the angle
+     * @return {number} the sine
      */
-    FactorialUtilClassic.prototype.getFactorials = function getFactorials(len) {
+    TaylorClassic.prototype.sine = function(x) {
         var _this = this; <i class="conum" data-value="6"></i><b>(6)</b>
-
-        this.calls++;
-        return _ <i class="conum" data-value="7"></i><b>(7)</b>
-            .range(1, len + 1)
-            .map(function (x) { <i class="conum" data-value="8"></i><b>(8)</b>
-                return _this.factorial(x); <i class="conum" data-value="9"></i><b>(9)</b>
-            });
-    };
-
-    FactorialUtilClassic.prototype.timesCalled = function timesCalled() {
-        console.log("Calls: " + this.calls); <i class="conum" data-value="10"></i><b>(10)</b>
-        return this.calls;
+        return _.reduce(_.range(0, 10), function(sum, i) { <i class="conum" data-value="7"></i><b>(7)</b><i class="conum" data-value="8"></i><b>(8)</b>
+            return sum + _this.pow(-1, i) * _this.pow(x, i * 2 + 1) / _this.fact(i * 2 + 1); <i class="conum" data-value="9"></i><b>(9)</b>
+        }, 0.0);
     };
 
     /**
-     * Returns a singleton of the FactorialUtilClassic
-     * @return {FactorialUtilClassic}
+     * Returns a singleton of the TaylorClassic
+     * @return {TaylorClassic}
      */
-    FactorialUtilClassic.getInstance = function getInstance() { <i class="conum" data-value="11"></i><b>(11)</b>
-        if (!this._instance) { <i class="conum" data-value="12"></i><b>(12)</b>
-            this._instance = new FactorialUtilClassic();
-            this.instantiations = this.instantiations ? this.instantiations + 1 : 1;
-            this._instance.calls = 0;
+    TaylorClassic.getInstance = function getInstance() { <i class="conum" data-value="10"></i><b>(10)</b>
+        if (!this._instance) { <i class="conum" data-value="11"></i><b>(11)</b>
+            this._instance = new TaylorClassic();
         }
         return this._instance;
     };
 
-    FactorialUtilClassic.instances = function instances() {
-        console.log("Instantiations: " + this.instantiations);
-        return this.instantiations;
-    };
-
-    return FactorialUtilClassic; <i class="conum" data-value="13"></i><b>(13)</b>
+    return TaylorClassic; <i class="conum" data-value="12"></i><b>(12)</b>
 })();</code></pre>
 </div>
 </div>
@@ -613,7 +612,7 @@ An experienced javascript developer would know this by instinct, but still fall 
 </tr>
 <tr>
 <td><i class="conum" data-value="8"></i><b>8</b></td>
-<td>This is the boilerplate required to map <code>x</code> to <code>x!</code></td>
+<td>This is the boilerplate required to call reduce</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="9"></i><b>9</b></td>
@@ -621,30 +620,40 @@ An experienced javascript developer would know this by instinct, but still fall 
 </tr>
 <tr>
 <td><i class="conum" data-value="10"></i><b>10</b></td>
-<td>The only way to construct expressions is concatenation.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="11"></i><b>11</b></td>
 <td>This is a static function. The clue is, there&#8217;s no <code>prototype</code>.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="12"></i><b>12</b></td>
+<td><i class="conum" data-value="11"></i><b>11</b></td>
 <td><code>this</code> means the <code>class</code> over here.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="13"></i><b>13</b></td>
+<td><i class="conum" data-value="12"></i><b>12</b></td>
 <td>We return the function from &lt;3&gt; over here. That is the instance returned to the call <code>new FactorialUtilClassic</code>.</td>
 </tr>
 </table>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript" data-lang="javascript">describe("Factorial Util Classic Spec", function () {
-    it("calls, values and instances match", function () {
-        expect(FactorialUtilClassic.getInstance().getFactorials(5).toString()).toBe([1, 2, 6, 24, 120].toString());
-        expect(FactorialUtilClassic.getInstance().getFactorials(3).toString()).toBe([1, 2, 6].toString());
-        expect(FactorialUtilClassic.instances()).toBe(1);
-        expect(FactorialUtilClassic.getInstance().timesCalled()).toBe(2);
+<pre class="highlightjs highlight"><code class="language-javascript" data-lang="javascript">describe('Taylor Classic Spec', function() {
+    return it('calls, values and instances match', function() {
+        var taylor = TaylorModern.getInstance();
+        var PI = 3.14159265359;
+        expect(taylor.pow(2, -2)).toBe(0.25);
+        expect(taylor.pow(2, -1)).toBe(0.5);
+        expect(taylor.pow(2, 0)).toBe(1);
+        expect(taylor.pow(2, 1)).toBe(2);
+        expect(taylor.pow(2, 2)).toBe(4);
+
+        expect(taylor.fact(0)).toBe(1);
+        expect(taylor.fact(1)).toBe(1);
+        expect(taylor.fact(2)).toBe(2);
+        expect(taylor.fact(3)).toBe(6);
+
+        expect(taylor.sine(0)).toBeCloseTo(0.0, 3);
+        expect(taylor.sine(PI / 4)).toBeCloseTo(0.707, 3);
+        expect(taylor.sine(PI / 3)).toBeCloseTo(0.866, 3);
+        expect(taylor.sine(PI / 2)).toBeCloseTo(1.0, 3);
+        expect(taylor.sine(PI)).toBeCloseTo(0.0, 3);
     });
 });</code></pre>
 </div>
@@ -657,55 +666,54 @@ An experienced javascript developer would know this by instinct, but still fall 
 <pre class="highlightjs highlight"><code class="language-js" data-lang="js">/**
  * A factory that offers factorial methods
  */
-class FactorialUtilModern { <i class="conum" data-value="1"></i><b>(1)</b>
+class TaylorModern { <i class="conum" data-value="1"></i><b>(1)</b>
+
+    /**
+     * Computes the p-th power of num
+     * @param num {number} the number
+     * @param p {int} the number
+     * @return {number} the power
+     */
+    pow(num, p) {
+        if (p == 0) return 1;
+        else if (p &gt; 0) return num * this.pow(num, p - 1);
+        else return 1 / num * this.pow(num, p + 1);
+    }
 
     /**
      * Computes the factorial of a number
      * @param x {int} the number
      * @return {int} the factorial
      */
-    factorial(x) {
-        return x &lt;= 0 ? 1 : x * this.factorial(x-1);
+    fact(x) {
+        return x &lt;= 0 ? 1 : x * this.fact(x - 1);
     }
 
     /**
-     * Returns the first n factorials starting with 1
-     * @param len {int} the number factorials to return
-     * @return {Array&lt;int&gt;}the list of factorials
+     * Computes the sine of an angle
+     * @param x {number} the angle
+     * @return {number} the sine
      */
-    getFactorials(len) {
-        this.calls ++;
+
+    sine(x) {
         return _
-                .range(1, len + 1)
-                .map(x =&gt; this.factorial(x)); <i class="conum" data-value="2"></i><b>(2)</b>
-    }
+            .chain(_.range(0, 10))
+            .reduce((sum, i) =&gt; sum + this.pow(-1, i) * this.pow(x, i * 2 + 1) / this.fact(i * 2 + 1), 0.0); <i class="conum" data-value="2"></i><b>(2)</b>
+    };
 
-    timesCalled() {
-        console.log(`Calls: ${this.calls}`); <i class="conum" data-value="3"></i><b>(3)</b>
-        return this.calls;
-    }
-
-
-    static _instance; <i class="conum" data-value="4"></i><b>(4)</b>
-    static instantiations;
+    static _instance; <i class="conum" data-value="3"></i><b>(3)</b>
 
     /**
-     * Returns a singleton of the FactorialUtilModern
-     * @return {FactorialUtilModern}
+     * Returns a singleton of the TaylorModern
+     * @return {TaylorModern}
      */
     static getInstance() {
-        if (!this._instance) { <i class="conum" data-value="5"></i><b>(5)</b>
-            this._instance = new FactorialUtilModern();
-            this.instantiations = this.instantiations ? this.instantiations + 1 : 1;
-            this._instance.calls = 0;
+        if (!this._instance) { <i class="conum" data-value="4"></i><b>(4)</b>
+            this._instance = new TaylorModern();
         }
         return this._instance;
     }
 
-    static instances() {
-        console.log(`Instantiations: ${this.instantiations}`);
-        return this.instantiations;
-    }
 }</code></pre>
 </div>
 </div>
@@ -721,26 +729,37 @@ class FactorialUtilModern { <i class="conum" data-value="1"></i><b>(1)</b>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>You have expressions with a style similar to groovy. You need to use backticks though.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>There is support for <code>static</code> members in classes.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>You still use <code>this</code> inside static members.</td>
 </tr>
 </table>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js" data-lang="js">describe("Factorial Util Modern Spec", function () {
-    it("calls, values and instances match", function () {
-        expect(FactorialUtilModern.getInstance().getFactorials(5).toString()).toBe([1, 2, 6, 24, 120].toString());
-        expect(FactorialUtilModern.getInstance().getFactorials(3).toString()).toBe([1, 2, 6].toString());
-        expect(FactorialUtilModern.instances()).toBe(1);
-        expect(FactorialUtilModern.getInstance().timesCalled()).toBe(2);
+<pre class="highlightjs highlight"><code class="language-js" data-lang="js">describe('Taylor Modern Spec', function () {
+    return it('calls, values and instances match', function () {
+        var taylor = TaylorModern.getInstance();
+        var PI = 3.14159265359;
+
+        expect(taylor.pow(2, -2)).toBe(0.25);
+        expect(taylor.pow(2, -1)).toBe(0.5);
+        expect(taylor.pow(2, 0)).toBe(1);
+        expect(taylor.pow(2, 1)).toBe(2);
+        expect(taylor.pow(2, 2)).toBe(4);
+
+        expect(taylor.fact(0)).toBe(1);
+        expect(taylor.fact(1)).toBe(1);
+        expect(taylor.fact(2)).toBe(2);
+        expect(taylor.fact(3)).toBe(6);
+
+        expect(taylor.sine(0)).toBeCloseTo(0.0, 3);
+        expect(taylor.sine(PI / 4)).toBeCloseTo(0.707, 3);
+        expect(taylor.sine(PI / 3)).toBeCloseTo(0.866, 3);
+        expect(taylor.sine(PI / 2)).toBeCloseTo(1.0, 3);
+        expect(taylor.sine(PI)).toBeCloseTo(0.0, 3);
     });
 });</code></pre>
 </div>
@@ -755,29 +774,36 @@ class FactorialUtilModern { <i class="conum" data-value="1"></i><b>(1)</b>
 ###* <i class="conum" data-value="2"></i><b>(2)</b>
 # A factory that offers factorial methods
 ###
-class FactorialUtilCoffee <i class="conum" data-value="3"></i><b>(3)</b>
+class TaylorCoffee <i class="conum" data-value="3"></i><b>(3)</b>
+
+  ###*
+  # Computes the p-th power of num
+  # @param num {number} the number
+  # @param p {int} the number
+  # @return {number} the power
+  ###
+  pow: (num, p) -&gt;
+    if p == 0 then 1
+    else if p &gt; 0 then num * @pow(num, p - 1)
+    else 1/num * @pow(num, p+1)
+
   ###*
   # Computes the factorial of a number
   # @param x {int} the number
   # @return {int} the factorial
   ###
-  factorial: (x) -&gt; <i class="conum" data-value="4"></i><b>(4)</b>
-    if x &lt;= 0 then 1 else x * @factorial(x - 1) <i class="conum" data-value="5"></i><b>(5)</b>
+  fact: (x) -&gt; <i class="conum" data-value="4"></i><b>(4)</b>
+    if x &lt;= 0 then 1 else x * @fact(x - 1) <i class="conum" data-value="5"></i><b>(5)</b>
 
   ###*
-  # Returns the first n factorials starting with 1
-  # @param len {int} the number factorials to return
-  # @return {Array&lt;int&gt;}the list of factorials
+  # Computes the sine of an angle
+  # @param x {number} the angle
+  # @return {number} the sine
   ###
-  getFactorials: (len) -&gt;
+  sine: (x) -&gt;
     _this = @ <i class="conum" data-value="6"></i><b>(6)</b>
-    @calls++
-    _.range(1, len + 1).map (x) -&gt; <i class="conum" data-value="7"></i><b>(7)</b>
-      _this.factorial x
-
-  timesCalled: -&gt;
-    console.log "Calls: #{@calls}" <i class="conum" data-value="8"></i><b>(8)</b>
-    @calls
+    reducer = (sum, i) -&gt; sum + _this.pow(-1, i) * _this.pow(x, i * 2 + 1) / _this.fact(i * 2 + 1) <i class="conum" data-value="7"></i><b>(7)</b>
+    _.reduce(_.range(0, 10), reducer, 0.0) <i class="conum" data-value="8"></i><b>(8)</b>
 
   ###*
   # Returns a singleton of the FactorialUtil
@@ -785,16 +811,10 @@ class FactorialUtilCoffee <i class="conum" data-value="3"></i><b>(3)</b>
   ###
   @getInstance = -&gt;
     if !@_instance
-      @_instance = new FactorialUtilCoffee
-      @instantiations = if @instantiations then @instantiations + 1 else 1
-      @_instance.calls = 0
+      @_instance = new TaylorCoffee
     @_instance <i class="conum" data-value="9"></i><b>(9)</b>
 
-  @instances = -&gt;
-    console.log "Instantiations: #{@instantiations}"
-    @instantiations
-
-window.FactorialUtilCoffee = FactorialUtilCoffee <i class="conum" data-value="10"></i><b>(10)</b></code></pre>
+window.TaylorCoffee = TaylorCoffee <i class="conum" data-value="9"></i><b>(9)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -829,14 +849,10 @@ window.FactorialUtilCoffee = FactorialUtilCoffee <i class="conum" data-value="10
 </tr>
 <tr>
 <td><i class="conum" data-value="8"></i><b>8</b></td>
-<td>Expressions are based on <code>#</code> like Ruby too</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="9"></i><b>9</b></td>
 <td>The last statement is always a return</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
 <td>Depending on the implementation of Coffeescript, the whole function could be inside of an anonymous function or not.
 So if you want to export the class, you better explicitly do that.</td>
 </tr>
@@ -844,12 +860,26 @@ So if you want to export the class, you better explicitly do that.</td>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-coffeescript" data-lang="coffeescript">describe 'Factorial Util Coffee Spec', -&gt;
+<pre class="highlightjs highlight"><code class="language-coffeescript" data-lang="coffeescript">describe 'Taylor Coffee Spec', -&gt;
   it 'calls, values and instances match', -&gt;
-    expect(FactorialUtilCoffee.getInstance().getFactorials(5).toString()).toBe [1, 2, 6, 24, 120].toString()
-    expect(FactorialUtilCoffee.getInstance().getFactorials(3).toString()).toBe [1, 2, 6].toString()
-    expect(FactorialUtilCoffee.instances()).toBe 1
-    expect(FactorialUtilCoffee.getInstance().timesCalled()).toBe 2</code></pre>
+    taylor = TaylorCoffee.getInstance()
+    PI = 3.14159265359
+    expect(taylor.pow(2, -2)).toBe 0.25
+    expect(taylor.pow(2, -1)).toBe 0.5
+    expect(taylor.pow(2, 0)).toBe 1
+    expect(taylor.pow(2, 1)).toBe 2
+    expect(taylor.pow(2, 2)).toBe 4
+
+    expect(taylor.fact(0)).toBe 1
+    expect(taylor.fact(1)).toBe 1
+    expect(taylor.fact(2)).toBe 2
+    expect(taylor.fact(3)).toBe 6
+
+    expect(taylor.sine(0)).toBe 0.0
+    expect(taylor.sine(PI/4)).toBeCloseTo 0.707, 3
+    expect(taylor.sine(PI/3)).toBeCloseTo 0.866, 3
+    expect(taylor.sine(PI/2)).toBeCloseTo 1.0, 3
+    expect(taylor.sine(PI)).toBeCloseTo 0.0, 3</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -861,7 +891,9 @@ So if you want to export the class, you better explicitly do that.</td>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy" data-lang="groovy">package jsalt.groovy
+
 import groovy.transform.CompileStatic
+import groovy.transform.Memoized
 import groovy.transform.TypeChecked
 
 /**
@@ -869,36 +901,25 @@ import groovy.transform.TypeChecked
  */
 @CompileStatic <i class="conum" data-value="1"></i><b>(1)</b>
 @TypeChecked
-class FactorialGroovy {
+class TaylorGroovy {
 
-  int calls = 0 <i class="conum" data-value="2"></i><b>(2)</b>
-
-  /**
-   * Computes the factorial of a number
-   * @param x the number
-   * @return the factorial
-   */
-  int factorial(int x) { <i class="conum" data-value="3"></i><b>(3)</b>
-    x &lt;= 0 ? 1 : x * factorial(x - 1) <i class="conum" data-value="4"></i><b>(4)</b>
+  double pow(double num, int p) { <i class="conum" data-value="3"></i><b>(3)</b>
+    if (p == 0) 1
+    else if (p &gt; 0) num * pow(num, p - 1) <i class="conum" data-value="4"></i><b>(4)</b>
+    else 1 / num * pow(num, p + 1)
   }
 
-  /**
-   * Gets a list of len factorials
-   * @param len the length of the sequence beginning at 1
-   * @return the sequence
-   */
-  List&lt;Integer&gt; getFactorials(int len) {
-    calls++
-    (1..len).collect { factorial(it) }
+  long fact(long x) {
+    x &gt; 0 ? x * fact(x - 1) : 1
   }
 
-  int timesCalled() {
-    println "Calls: $calls"
-    calls
+  double sine(double x) {
+    (0..10).inject(0.0) { sum, i -&gt;
+      sum + pow(-1, i) * pow(x, i * 2 + 1) / fact(i * 2 + 1)
+    } as double
   }
 
-  static FactorialGroovy instance = null
-  static int instantiations = 0
+  static TaylorGroovy instance = null <i class="conum" data-value="2"></i><b>(2)</b>
 
   /**
    * A poor man's singleton. This is not thread safe.
@@ -906,17 +927,13 @@ class FactorialGroovy {
    *
    * @return the singleton
    */
-  static FactorialGroovy getInstance() { <i class="conum" data-value="5"></i><b>(5)</b>
+  static TaylorGroovy getInstance() { <i class="conum" data-value="5"></i><b>(5)</b>
     if (!instance) {
-      instance = new FactorialGroovy()
-      instantiations++
+      instance = new TaylorGroovy()
     }
     instance
   }
 
-  static int instances() {
-    instantiations
-  }
 }</code></pre>
 </div>
 </div>
@@ -950,13 +967,30 @@ class FactorialGroovy {
 
 import spock.lang.Specification
 
-class FactorialGroovySpec extends Specification { <i class="conum" data-value="1"></i><b>(1)</b>
+class TaylorGroovySpec extends Specification { <i class="conum" data-value="1"></i><b>(1)</b>
+
+  public static final BigDecimal PI = 3.14159265359
+
   def "calls, values and instances match"() {
+    def taylor = TaylorGroovy.instance
     expect:
-    FactorialGroovy.instance.getFactorials(5) == [1, 2, 6, 24, 120] <i class="conum" data-value="2"></i><b>(2)</b>
-    FactorialGroovy.instance.getFactorials(3) == [1, 2, 6]
-    FactorialGroovy.instances() == 1
-    FactorialGroovy.instance.timesCalled() == 2
+    taylor.pow(2, -2) == 0.25 <i class="conum" data-value="2"></i><b>(2)</b>
+    taylor.pow(2, -1) == 0.5
+    taylor.pow(2, 0) == 1
+    taylor.pow(2, 1) == 2
+    taylor.pow(2, 2) == 4
+
+    taylor.fact(0) == 1
+    taylor.fact(1) == 1
+    taylor.fact(2) == 2
+    taylor.fact(3) == 6
+
+    taylor.sine(0) == 0.0
+    taylor.sine(PI / 4) &gt; 0.707 &amp;&amp; taylor.sine(PI / 4) &lt; 0.708 <i class="conum" data-value="3"></i><b>(3)</b>
+    taylor.sine(PI / 3) &gt; 0.866 &amp;&amp; taylor.sine(PI / 3) &lt; 0.867
+    taylor.sine(PI / 2) &gt; 0.999 &amp;&amp; taylor.sine(PI / 2) &lt; 1.001
+    taylor.sine(PI) &gt; -0.001 &amp;&amp; taylor.sine(PI) &lt; 0.001
+
   }
 }</code></pre>
 </div>
@@ -971,6 +1005,10 @@ class FactorialGroovySpec extends Specification { <i class="conum" data-value="1
 <td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>The assertions are much nicer than jasmine</td>
 </tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Jasmine&#8217;s <code>toBeCloseTo</code> is missed</td>
+</tr>
 </table>
 </div>
 </div>
@@ -980,33 +1018,33 @@ class FactorialGroovySpec extends Specification { <i class="conum" data-value="1
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-scala" data-lang="scala">import scala.scalajs.js.annotation.JSExport
 
-class FactorialScala {
-  def factorial(x: Int): Int = if (x &lt;= 0) 1 else x * factorial(x - 1) <i class="conum" data-value="1"></i><b>(1)</b><i class="conum" data-value="2"></i><b>(2)</b><i class="conum" data-value="3"></i><b>(3)</b>
+class TaylorScala {
 
-  private var calls = 0 <i class="conum" data-value="4"></i><b>(4)</b>
+  def fact(x: Long): Long = if (x &gt; 0) x * fact(x - 1) else 1 <i class="conum" data-value="1"></i><b>(1)</b><i class="conum" data-value="2"></i><b>(2)</b><i class="conum" data-value="3"></i><b>(3)</b>
 
-  def getFactorials(len: Int) = { <i class="conum" data-value="5"></i><b>(5)</b><i class="conum" data-value="6"></i><b>(6)</b>
-    calls = calls + 1
-    Range(1, len + 1).map(x =&gt; factorial(x))
+  def pow(num: Double, p: Int): Double = { <i class="conum" data-value="4"></i><b>(4)</b>
+    if (p == 0) 1
+    else if (p &gt; 0) num * pow(num, p - 1)
+    else 1 / num * pow(num, p + 1)
   }
 
-  def timesCalled() = calls
+  def sine(x: Double) = Range(0, 10) <i class="conum" data-value="5"></i><b>(5)</b>
+    .foldLeft(0.0)(
+      (sum, i) =&gt; sum + pow(-1, i) * pow(x, i * 2 + 1) / fact(i * 2 + 1)
+    )
+
 }
 
-@JSExport <i class="conum" data-value="7"></i><b>(7)</b>
-object FactorialScala {
-  private var instanciations = 0
-  private var instance: FactorialScala = null
+@JSExport <i class="conum" data-value="6"></i><b>(6)</b>
+object TaylorScala {
+  private var instance: TaylorScala = null
 
-  def getInstance() = { <i class="conum" data-value="8"></i><b>(8)</b>
+  def getInstance() = { <i class="conum" data-value="7"></i><b>(7)</b>
     if (instance == null) {
-      this.instanciations = this.instanciations + 1
-      instance = new FactorialScala
+      instance = new TaylorScala
     }
     instance
   }
-
-  def instances = instanciations <i class="conum" data-value="9"></i><b>(9)</b>
 }</code></pre>
 </div>
 </div>
@@ -1026,28 +1064,20 @@ object FactorialScala {
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>This is a basic demo of type inference.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
 <td>This is a method body with <code>{}</code>.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
 <td>Also Scala infers the return of this method. It is not <code>Object</code>.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
 <td>ScalaJs is very aggressive in optimizing generated javascript. We need to tell it what we will be using from
 outside unless we have a <code>JSApp</code> with a <code>main</code> method.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
 <td>More demo of advanced type inference.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="9"></i><b>9</b></td>
-<td>This looks like an expression, but it is a function.</td>
 </tr>
 </table>
 </div>
@@ -1060,12 +1090,31 @@ import org.scalatest.junit.JUnitRunner
 // import scala.collection.immutable.List <i class="conum" data-value="1"></i><b>(1)</b>
 
 @RunWith(classOf[JUnitRunner]) <i class="conum" data-value="2"></i><b>(2)</b>
-class FactorialScalaSpec extends FunSuite {
+class TaylorScalaSpec extends FunSuite {
+  final val PI = 3.14159265359
   test("calls, values and instances match") {
-    assert(FactorialScala.getInstance().getFactorials(5) == List(1, 2, 6, 24, 120)) <i class="conum" data-value="3"></i><b>(3)</b>
-    assert(FactorialScala.getInstance().getFactorials(3) == List(1, 2, 6))
-    assert(FactorialScala.instances == 1)
-    assert(FactorialScala.getInstance().timesCalled() == 2)
+    val taylor = TaylorScala.getInstance()
+    assert(taylor.pow(2, -2) == 0.25) <i class="conum" data-value="3"></i><b>(3)</b>
+    assert(taylor.pow(2, -1) == 0.5)
+    assert(taylor.pow(2, 0) == 1)
+    assert(taylor.pow(2, 1) == 2)
+    assert(taylor.pow(2, 2) == 4)
+
+    assert(taylor.fact(0) == 1)
+    assert(taylor.fact(1) == 1)
+    assert(taylor.fact(2) == 2)
+    assert(taylor.fact(3) == 6)
+
+    assert(taylor.sine(0) == 0.0)
+    assert(taylor.sine(PI / 4) &gt; 0.707)
+    assert(taylor.sine(PI / 4) &lt; 0.708)
+    assert(taylor.sine(PI / 3) &gt; 0.866)
+    assert(taylor.sine(PI / 3) &lt; 0.867)
+    assert(taylor.sine(PI / 2) &gt; 0.999)
+    assert(taylor.sine(PI / 2) &lt; 1.001)
+    assert(taylor.sine(PI) &gt; -0.001)
+    assert(taylor.sine(PI) &lt; 0.001)
+
   }
 }</code></pre>
 </div>
@@ -1110,7 +1159,7 @@ class FactorialScalaSpec extends FunSuite {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-15 00:16:20 UTC
+Last updated 2016-02-15 05:38:59 UTC
 </div>
 </div>
 </body>
