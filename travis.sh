@@ -10,6 +10,9 @@ if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_REPO_SLUG == "rahulsom/jsalt" && $TR
   git config --global credential.helper "store --file=~/.git-credentials"
   echo "https://$GH_TOKEN:@github.com" > ~/.git-credentials
 
+  gem install asciidoctor pygments.rb
+  asciidoctor -a source-highlighter=pygments src/asciidoc/index.adoc -o build/asciidoc/index.html
+
   echo "Cloning gh-pages branch"
   git clone https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git -b gh-pages \
       gh-pages --single-branch > /dev/null
