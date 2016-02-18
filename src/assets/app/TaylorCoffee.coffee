@@ -31,7 +31,9 @@ class TaylorCoffee # <3>
   ###
   sine: (x) ->
     _this = @ # <6>
-    reducer = (sum, i) -> sum + _this.pow(-1, i) * _this.pow(x, i * 2 + 1) / _this.fact(i * 2 + 1) # <7>
+    reducer = (sum, i) ->
+      sum +
+        _this.pow(-1, i) * _this.pow(x, i * 2 + 1) / _this.fact(i * 2 + 1) # <7>
     _.reduce(_.range(0, 10), reducer, 0.0) # <8>
 
   ###*
