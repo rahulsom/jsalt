@@ -582,63 +582,65 @@ Some are positive, some are negative, while others are just plain interesting.</
 <h3 id="_classic_javascript_es_5">Classic Javascript (ES 5)</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-s2">&quot;use strict&quot;</span><span class="tok-p">;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-s1">&#39;use strict&#39;</span><span class="tok-p">;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+
 
 <span class="tok-cm">/**</span>
 <span class="tok-cm"> * A factory that offers factorial methods</span>
 <span class="tok-cm"> */</span>
-<span class="tok-kd">var</span> <span class="tok-nx">TaylorClassic</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-kd">function</span> <span class="tok-p">()</span> <span class="tok-p">{</span> <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="tok-kd">function</span> <span class="tok-nx">TaylorClassic</span><span class="tok-p">()</span> <span class="tok-p">{}</span> <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="tok-kd">var</span> <span class="tok-nx">TaylorClassic</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span> <i class="conum" data-value="2"></i><b>(2)</b>
+  <span class="tok-kd">function</span> <span class="tok-nx">TaylorClassic</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+  <span class="tok-p">}</span> <i class="conum" data-value="3"></i><b>(3)</b>
 
-    <span class="tok-cm">/**</span>
-<span class="tok-cm">     * Computes the p-th power of num</span>
-<span class="tok-cm">     * @param num {number} the number</span>
-<span class="tok-cm">     * @param p {int} the number</span>
-<span class="tok-cm">     * @return {number} the power</span>
-<span class="tok-cm">     */</span>
-    <span class="tok-nx">TaylorClassic</span><span class="tok-p">.</span><span class="tok-nx">prototype</span><span class="tok-p">.</span><span class="tok-nx">pow</span> <span class="tok-o">=</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">num</span><span class="tok-p">,</span> <span class="tok-nx">p</span><span class="tok-p">)</span> <span class="tok-p">{</span> <i class="conum" data-value="4"></i><b>(4)</b>
-        <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">p</span> <span class="tok-o">===</span> <span class="tok-mi">0</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-            <span class="tok-k">return</span> <span class="tok-mi">1</span><span class="tok-p">;</span>
-        <span class="tok-p">}</span> <span class="tok-k">else</span> <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">p</span> <span class="tok-o">&gt;</span> <span class="tok-mi">0</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-            <span class="tok-k">return</span> <span class="tok-nx">num</span> <span class="tok-o">*</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">num</span><span class="tok-p">,</span> <span class="tok-nx">p</span> <span class="tok-o">-</span> <span class="tok-mi">1</span><span class="tok-p">);</span>
-        <span class="tok-p">}</span> <span class="tok-k">else</span> <span class="tok-p">{</span>
-            <span class="tok-k">return</span> <span class="tok-mi">1</span> <span class="tok-o">/</span> <span class="tok-nx">num</span> <span class="tok-o">*</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">num</span><span class="tok-p">,</span> <span class="tok-nx">p</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">);</span>
-        <span class="tok-p">}</span>
-    <span class="tok-p">};</span>
+  <span class="tok-cm">/**</span>
+<span class="tok-cm">   * Computes the p-th power of num</span>
+<span class="tok-cm">   * @param {number} num the number</span>
+<span class="tok-cm">   * @param {int} p the number</span>
+<span class="tok-cm">   * @return {number} the power</span>
+<span class="tok-cm">   */</span>
+  <span class="tok-nx">TaylorClassic</span><span class="tok-p">.</span><span class="tok-nx">prototype</span><span class="tok-p">.</span><span class="tok-nx">pow</span> <span class="tok-o">=</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">num</span><span class="tok-p">,</span> <span class="tok-nx">p</span><span class="tok-p">)</span> <span class="tok-p">{</span> <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">p</span> <span class="tok-o">===</span> <span class="tok-mi">0</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+      <span class="tok-k">return</span> <span class="tok-mi">1</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span> <span class="tok-k">else</span> <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">p</span> <span class="tok-o">&gt;</span> <span class="tok-mi">0</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+      <span class="tok-k">return</span> <span class="tok-nx">num</span> <span class="tok-o">*</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">num</span><span class="tok-p">,</span> <span class="tok-nx">p</span> <span class="tok-o">-</span> <span class="tok-mi">1</span><span class="tok-p">);</span>
+    <span class="tok-p">}</span> <span class="tok-k">else</span> <span class="tok-p">{</span>
+      <span class="tok-k">return</span> <span class="tok-mi">1</span> <span class="tok-o">/</span> <span class="tok-nx">num</span> <span class="tok-o">*</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">num</span><span class="tok-p">,</span> <span class="tok-nx">p</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">);</span>
+    <span class="tok-p">}</span>
+  <span class="tok-p">};</span>
 
-    <span class="tok-cm">/**</span>
-<span class="tok-cm">     * Computes the factorial of a number</span>
-<span class="tok-cm">     * @param x {int} the number </span><i class="conum" data-value="5"></i><b>(5)</b>
-<span class="tok-cm">     * @return {int} the factorial</span>
-<span class="tok-cm">     */</span>
-    <span class="tok-nx">TaylorClassic</span><span class="tok-p">.</span><span class="tok-nx">prototype</span><span class="tok-p">.</span><span class="tok-nx">fact</span> <span class="tok-o">=</span> <span class="tok-kd">function</span> <span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nx">x</span> <span class="tok-o">&lt;=</span> <span class="tok-mi">0</span> <span class="tok-o">?</span> <span class="tok-mi">1</span> <span class="tok-o">:</span> <span class="tok-nx">x</span> <span class="tok-o">*</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-nx">x</span> <span class="tok-o">-</span> <span class="tok-mi">1</span><span class="tok-p">);</span>
-    <span class="tok-p">};</span>
+  <span class="tok-cm">/**</span>
+<span class="tok-cm">   * Computes the factorial of a number</span>
+<span class="tok-cm">   * @param {int} x the number </span><i class="conum" data-value="5"></i><b>(5)</b>
+<span class="tok-cm">   * @return {int} the factorial</span>
+<span class="tok-cm">   */</span>
+  <span class="tok-nx">TaylorClassic</span><span class="tok-p">.</span><span class="tok-nx">prototype</span><span class="tok-p">.</span><span class="tok-nx">fact</span> <span class="tok-o">=</span> <span class="tok-kd">function</span> <span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-k">return</span> <span class="tok-nx">x</span> <span class="tok-o">&lt;=</span> <span class="tok-mi">0</span> <span class="tok-o">?</span> <span class="tok-mi">1</span> <span class="tok-o">:</span> <span class="tok-nx">x</span> <span class="tok-o">*</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-nx">x</span> <span class="tok-o">-</span> <span class="tok-mi">1</span><span class="tok-p">);</span>
+  <span class="tok-p">};</span>
 
-    <span class="tok-cm">/**</span>
-<span class="tok-cm">     * Computes the sine of an angle</span>
-<span class="tok-cm">     * @param x {number} the angle</span>
-<span class="tok-cm">     * @return {number} the sine</span>
-<span class="tok-cm">     */</span>
-    <span class="tok-nx">TaylorClassic</span><span class="tok-p">.</span><span class="tok-nx">prototype</span><span class="tok-p">.</span><span class="tok-nx">sine</span> <span class="tok-o">=</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-kd">var</span> <span class="tok-nx">_this</span> <span class="tok-o">=</span> <span class="tok-k">this</span><span class="tok-p">;</span> <i class="conum" data-value="6"></i><b>(6)</b>
-        <span class="tok-k">return</span> <span class="tok-nx">_</span><span class="tok-p">.</span><span class="tok-nx">reduce</span><span class="tok-p">(</span><span class="tok-nx">_</span><span class="tok-p">.</span><span class="tok-nx">range</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">10</span><span class="tok-p">),</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">sum</span><span class="tok-p">,</span> <span class="tok-nx">i</span><span class="tok-p">)</span> <span class="tok-p">{</span> <i class="conum" data-value="7"></i><b>(7)</b> <i class="conum" data-value="8"></i><b>(8)</b>
-            <span class="tok-k">return</span> <span class="tok-nx">sum</span> <span class="tok-o">+</span> <span class="tok-nx">_this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-nx">i</span><span class="tok-p">)</span> <span class="tok-o">*</span> <span class="tok-nx">_this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">,</span> <span class="tok-nx">i</span> <span class="tok-o">*</span> <span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-o">/</span> <span class="tok-nx">_this</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-nx">i</span> <span class="tok-o">*</span> <span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">);</span> <i class="conum" data-value="9"></i><b>(9)</b>
-        <span class="tok-p">},</span> <span class="tok-mf">0.0</span><span class="tok-p">);</span>
-    <span class="tok-p">};</span>
+  <span class="tok-cm">/**</span>
+<span class="tok-cm">   * Computes the sine of an angle</span>
+<span class="tok-cm">   * @param {number} x the angle</span>
+<span class="tok-cm">   * @return {number} the sine</span>
+<span class="tok-cm">   */</span>
+  <span class="tok-nx">TaylorClassic</span><span class="tok-p">.</span><span class="tok-nx">prototype</span><span class="tok-p">.</span><span class="tok-nx">sine</span> <span class="tok-o">=</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-kd">var</span> <span class="tok-nx">_this</span> <span class="tok-o">=</span> <span class="tok-k">this</span><span class="tok-p">;</span> <i class="conum" data-value="6"></i><b>(6)</b>
+    <span class="tok-k">return</span> <span class="tok-nx">_</span><span class="tok-p">.</span><span class="tok-nx">reduce</span><span class="tok-p">(</span><span class="tok-nx">_</span><span class="tok-p">.</span><span class="tok-nx">range</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">10</span><span class="tok-p">),</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">sum</span><span class="tok-p">,</span> <span class="tok-nx">i</span><span class="tok-p">)</span> <span class="tok-p">{</span> <i class="conum" data-value="7"></i><b>(7)</b> <i class="conum" data-value="8"></i><b>(8)</b>
+      <span class="tok-k">return</span> <span class="tok-nx">sum</span> <span class="tok-o">+</span> <span class="tok-nx">_this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-nx">i</span><span class="tok-p">)</span> <span class="tok-o">*</span> <span class="tok-nx">_this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">,</span> <span class="tok-nx">i</span> <span class="tok-o">*</span> <span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-o">/</span> <span class="tok-nx">_this</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-nx">i</span> <span class="tok-o">*</span> <span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">);</span> <i class="conum" data-value="9"></i><b>(9)</b>
+    <span class="tok-p">},</span> <span class="tok-mf">0.0</span><span class="tok-p">);</span>
+  <span class="tok-p">};</span>
 
-    <span class="tok-cm">/**</span>
-<span class="tok-cm">     * Returns a singleton of the TaylorClassic</span>
-<span class="tok-cm">     * @return {TaylorClassic}</span>
-<span class="tok-cm">     */</span>
-    <span class="tok-nx">TaylorClassic</span><span class="tok-p">.</span><span class="tok-nx">getInstance</span> <span class="tok-o">=</span> <span class="tok-kd">function</span> <span class="tok-nx">getInstance</span><span class="tok-p">()</span> <span class="tok-p">{</span> <i class="conum" data-value="10"></i><b>(10)</b>
-        <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-o">!</span><span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_instance</span><span class="tok-p">)</span> <span class="tok-p">{</span> <i class="conum" data-value="11"></i><b>(11)</b>
-            <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_instance</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">TaylorClassic</span><span class="tok-p">();</span>
-        <span class="tok-p">}</span>
-        <span class="tok-k">return</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_instance</span><span class="tok-p">;</span>
-    <span class="tok-p">};</span>
+  <span class="tok-cm">/**</span>
+<span class="tok-cm">   * Returns a singleton of the TaylorClassic</span>
+<span class="tok-cm">   * @return {TaylorClassic}</span>
+<span class="tok-cm">   */</span>
+  <span class="tok-nx">TaylorClassic</span><span class="tok-p">.</span><span class="tok-nx">getInstance</span> <span class="tok-o">=</span> <span class="tok-kd">function</span> <span class="tok-nx">getInstance</span><span class="tok-p">()</span> <span class="tok-p">{</span> <i class="conum" data-value="10"></i><b>(10)</b>
+    <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-o">!</span><span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_instance</span><span class="tok-p">)</span> <span class="tok-p">{</span> <i class="conum" data-value="11"></i><b>(11)</b>
+      <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_instance</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">TaylorClassic</span><span class="tok-p">();</span>
+    <span class="tok-p">}</span>
+    <span class="tok-k">return</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_instance</span><span class="tok-p">;</span>
+  <span class="tok-p">};</span>
 
-    <span class="tok-k">return</span> <span class="tok-nx">TaylorClassic</span><span class="tok-p">;</span> <i class="conum" data-value="12"></i><b>(12)</b>
+  <span class="tok-k">return</span> <span class="tok-nx">TaylorClassic</span><span class="tok-p">;</span> <i class="conum" data-value="12"></i><b>(12)</b>
 <span class="tok-p">})();</span></code></pre>
 </div>
 </div>
@@ -705,26 +707,26 @@ An experienced javascript developer would know this by instinct, but still fall 
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="javascript"><span class="tok-nx">describe</span><span class="tok-p">(</span><span class="tok-s1">&#39;Taylor Classic Spec&#39;</span><span class="tok-p">,</span> <span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span>
-    <span class="tok-k">return</span> <span class="tok-nx">it</span><span class="tok-p">(</span><span class="tok-s1">&#39;calls, values and instances match&#39;</span><span class="tok-p">,</span> <span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span>
-        <span class="tok-kd">var</span> <span class="tok-nx">taylor</span> <span class="tok-o">=</span> <span class="tok-nx">TaylorModern</span><span class="tok-p">.</span><span class="tok-nx">getInstance</span><span class="tok-p">();</span>
-        <span class="tok-kd">var</span> <span class="tok-nx">PI</span> <span class="tok-o">=</span> <span class="tok-mf">3.14159265359</span><span class="tok-p">;</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-o">-</span><span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mf">0.25</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mf">0.5</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">);</span>
+  <span class="tok-k">return</span> <span class="tok-nx">it</span><span class="tok-p">(</span><span class="tok-s1">&#39;calls, values and instances match&#39;</span><span class="tok-p">,</span> <span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+    <span class="tok-kd">var</span> <span class="tok-nx">taylor</span> <span class="tok-o">=</span> <span class="tok-nx">TaylorModern</span><span class="tok-p">.</span><span class="tok-nx">getInstance</span><span class="tok-p">();</span>
+    <span class="tok-kd">var</span> <span class="tok-nx">PI</span> <span class="tok-o">=</span> <span class="tok-mf">3.14159265359</span><span class="tok-p">;</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-o">-</span><span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mf">0.25</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mf">0.5</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">);</span>
 
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">3</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">6</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">3</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">6</span><span class="tok-p">);</span>
 
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span> <span class="tok-o">/</span> <span class="tok-mi">4</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.707</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span> <span class="tok-o">/</span> <span class="tok-mi">3</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.866</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span> <span class="tok-o">/</span> <span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">1.0</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
-    <span class="tok-p">});</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span> <span class="tok-o">/</span> <span class="tok-mi">4</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.707</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span> <span class="tok-o">/</span> <span class="tok-mi">3</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.866</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span> <span class="tok-o">/</span> <span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">1.0</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+  <span class="tok-p">});</span>
 <span class="tok-p">});</span></code></pre>
 </div>
 </div>
@@ -738,51 +740,53 @@ An experienced javascript developer would know this by instinct, but still fall 
 <span class="tok-cm"> */</span>
 <span class="tok-kr">class</span> <span class="tok-nx">TaylorModern</span> <span class="tok-p">{</span> <i class="conum" data-value="1"></i><b>(1)</b>
 
-    <span class="tok-cm">/**</span>
-<span class="tok-cm">     * Computes the p-th power of num</span>
-<span class="tok-cm">     * @param num {number} the number</span>
-<span class="tok-cm">     * @param p {int} the number</span>
-<span class="tok-cm">     * @return {number} the power</span>
-<span class="tok-cm">     */</span>
-    <span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">num</span><span class="tok-p">,</span> <span class="tok-nx">p</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">p</span> <span class="tok-o">==</span> <span class="tok-mi">0</span><span class="tok-p">)</span> <span class="tok-k">return</span> <span class="tok-mi">1</span><span class="tok-p">;</span>
-        <span class="tok-k">else</span> <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">p</span> <span class="tok-o">&gt;</span> <span class="tok-mi">0</span><span class="tok-p">)</span> <span class="tok-k">return</span> <span class="tok-nx">num</span> <span class="tok-o">*</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">num</span><span class="tok-p">,</span> <span class="tok-nx">p</span> <span class="tok-o">-</span> <span class="tok-mi">1</span><span class="tok-p">);</span>
-        <span class="tok-k">else</span> <span class="tok-k">return</span> <span class="tok-mi">1</span> <span class="tok-o">/</span> <span class="tok-nx">num</span> <span class="tok-o">*</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">num</span><span class="tok-p">,</span> <span class="tok-nx">p</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">);</span>
+  <span class="tok-cm">/**</span>
+<span class="tok-cm">   * Computes the p-th power of num</span>
+<span class="tok-cm">   * @param {number} num the number</span>
+<span class="tok-cm">   * @param {int} p the number</span>
+<span class="tok-cm">   * @return {number} the power</span>
+<span class="tok-cm">   */</span>
+  <span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">num</span><span class="tok-p">,</span> <span class="tok-nx">p</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">p</span> <span class="tok-o">==</span> <span class="tok-mi">0</span><span class="tok-p">)</span> <span class="tok-k">return</span> <span class="tok-mi">1</span><span class="tok-p">;</span>
+    <span class="tok-k">else</span> <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">p</span> <span class="tok-o">&gt;</span> <span class="tok-mi">0</span><span class="tok-p">)</span> <span class="tok-k">return</span> <span class="tok-nx">num</span> <span class="tok-o">*</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">num</span><span class="tok-p">,</span> <span class="tok-nx">p</span> <span class="tok-o">-</span> <span class="tok-mi">1</span><span class="tok-p">);</span>
+    <span class="tok-k">else</span> <span class="tok-k">return</span> <span class="tok-mi">1</span> <span class="tok-o">/</span> <span class="tok-nx">num</span> <span class="tok-o">*</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">num</span><span class="tok-p">,</span> <span class="tok-nx">p</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">);</span>
+  <span class="tok-p">}</span>
+
+  <span class="tok-cm">/**</span>
+<span class="tok-cm">   * Computes the factorial of a number</span>
+<span class="tok-cm">   * @param {int} x the number</span>
+<span class="tok-cm">   * @return {int} the factorial</span>
+<span class="tok-cm">   */</span>
+  <span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-k">return</span> <span class="tok-nx">x</span> <span class="tok-o">&lt;=</span> <span class="tok-mi">0</span> <span class="tok-o">?</span> <span class="tok-mi">1</span> <span class="tok-o">:</span> <span class="tok-nx">x</span> <span class="tok-o">*</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-nx">x</span> <span class="tok-o">-</span> <span class="tok-mi">1</span><span class="tok-p">);</span>
+  <span class="tok-p">}</span>
+
+  <span class="tok-cm">/**</span>
+<span class="tok-cm">   * Computes the sine of an angle</span>
+<span class="tok-cm">   * @param {number} x the angle</span>
+<span class="tok-cm">   * @return {number} the sine</span>
+<span class="tok-cm">   */</span>
+
+  <span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-k">return</span> <span class="tok-nx">_</span>
+        <span class="tok-p">.</span><span class="tok-nx">chain</span><span class="tok-p">(</span><span class="tok-nx">_</span><span class="tok-p">.</span><span class="tok-nx">range</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">10</span><span class="tok-p">))</span>
+        <span class="tok-p">.</span><span class="tok-nx">reduce</span><span class="tok-p">((</span><span class="tok-nx">sum</span><span class="tok-p">,</span> <span class="tok-nx">i</span><span class="tok-p">)</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">sum</span> <span class="tok-o">+</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-nx">i</span><span class="tok-p">)</span> <span class="tok-o">*</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">,</span> <span class="tok-nx">i</span> <span class="tok-o">*</span> <span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-o">/</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-nx">i</span> <span class="tok-o">*</span> <span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">),</span> <span class="tok-mf">0.0</span><span class="tok-p">);</span> <i class="conum" data-value="2"></i><b>(2)</b>
+  <span class="tok-p">}</span>
+
+  <span class="tok-nx">constructor</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+    <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_instance</span> <span class="tok-o">=</span> <span class="tok-kc">null</span><span class="tok-p">;</span>  <i class="conum" data-value="3"></i><b>(3)</b>
+  <span class="tok-p">}</span>
+
+  <span class="tok-cm">/**</span>
+<span class="tok-cm">   * Returns a singleton of the TaylorModern</span>
+<span class="tok-cm">   * @return {TaylorModern}</span>
+<span class="tok-cm">   */</span>
+  <span class="tok-kr">static</span> <span class="tok-nx">getInstance</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+    <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-o">!</span><span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_instance</span><span class="tok-p">)</span> <span class="tok-p">{</span> <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_instance</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">TaylorModern</span><span class="tok-p">();</span>
     <span class="tok-p">}</span>
-
-    <span class="tok-cm">/**</span>
-<span class="tok-cm">     * Computes the factorial of a number</span>
-<span class="tok-cm">     * @param x {int} the number</span>
-<span class="tok-cm">     * @return {int} the factorial</span>
-<span class="tok-cm">     */</span>
-    <span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nx">x</span> <span class="tok-o">&lt;=</span> <span class="tok-mi">0</span> <span class="tok-o">?</span> <span class="tok-mi">1</span> <span class="tok-o">:</span> <span class="tok-nx">x</span> <span class="tok-o">*</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-nx">x</span> <span class="tok-o">-</span> <span class="tok-mi">1</span><span class="tok-p">);</span>
-    <span class="tok-p">}</span>
-
-    <span class="tok-cm">/**</span>
-<span class="tok-cm">     * Computes the sine of an angle</span>
-<span class="tok-cm">     * @param x {number} the angle</span>
-<span class="tok-cm">     * @return {number} the sine</span>
-<span class="tok-cm">     */</span>
-
-    <span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nx">_</span>
-            <span class="tok-p">.</span><span class="tok-nx">chain</span><span class="tok-p">(</span><span class="tok-nx">_</span><span class="tok-p">.</span><span class="tok-nx">range</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">10</span><span class="tok-p">))</span>
-            <span class="tok-p">.</span><span class="tok-nx">reduce</span><span class="tok-p">((</span><span class="tok-nx">sum</span><span class="tok-p">,</span> <span class="tok-nx">i</span><span class="tok-p">)</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">sum</span> <span class="tok-o">+</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-nx">i</span><span class="tok-p">)</span> <span class="tok-o">*</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">,</span> <span class="tok-nx">i</span> <span class="tok-o">*</span> <span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-o">/</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-nx">i</span> <span class="tok-o">*</span> <span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">),</span> <span class="tok-mf">0.0</span><span class="tok-p">);</span> <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="tok-p">};</span>
-
-    <span class="tok-kr">static</span> <span class="tok-nx">_instance</span><span class="tok-p">;</span> <i class="conum" data-value="3"></i><b>(3)</b>
-
-    <span class="tok-cm">/**</span>
-<span class="tok-cm">     * Returns a singleton of the TaylorModern</span>
-<span class="tok-cm">     * @return {TaylorModern}</span>
-<span class="tok-cm">     */</span>
-    <span class="tok-kr">static</span> <span class="tok-nx">getInstance</span><span class="tok-p">()</span> <span class="tok-p">{</span>
-        <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-o">!</span><span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_instance</span><span class="tok-p">)</span> <span class="tok-p">{</span> <i class="conum" data-value="4"></i><b>(4)</b>
-            <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_instance</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">TaylorModern</span><span class="tok-p">();</span>
-        <span class="tok-p">}</span>
-        <span class="tok-k">return</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_instance</span><span class="tok-p">;</span>
-    <span class="tok-p">}</span>
+    <span class="tok-k">return</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_instance</span><span class="tok-p">;</span>
+  <span class="tok-p">}</span>
 
 <span class="tok-p">}</span></code></pre>
 </div>
@@ -809,28 +813,28 @@ An experienced javascript developer would know this by instinct, but still fall 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="js"><span class="tok-nx">describe</span><span class="tok-p">(</span><span class="tok-s1">&#39;Taylor Modern Spec&#39;</span><span class="tok-p">,</span> <span class="tok-kd">function</span> <span class="tok-p">()</span> <span class="tok-p">{</span>
-    <span class="tok-k">return</span> <span class="tok-nx">it</span><span class="tok-p">(</span><span class="tok-s1">&#39;calls, values and instances match&#39;</span><span class="tok-p">,</span> <span class="tok-kd">function</span> <span class="tok-p">()</span> <span class="tok-p">{</span>
-        <span class="tok-kd">var</span> <span class="tok-nx">taylor</span> <span class="tok-o">=</span> <span class="tok-nx">TaylorModern</span><span class="tok-p">.</span><span class="tok-nx">getInstance</span><span class="tok-p">();</span>
-        <span class="tok-kd">var</span> <span class="tok-nx">PI</span> <span class="tok-o">=</span> <span class="tok-mf">3.14159265359</span><span class="tok-p">;</span>
+<pre class="pygments highlight"><code data-lang="js"><span class="tok-nx">describe</span><span class="tok-p">(</span><span class="tok-s1">&#39;Taylor Modern Spec&#39;</span><span class="tok-p">,</span> <span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+  <span class="tok-k">return</span> <span class="tok-nx">it</span><span class="tok-p">(</span><span class="tok-s1">&#39;calls, values and instances match&#39;</span><span class="tok-p">,</span> <span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+    <span class="tok-kd">var</span> <span class="tok-nx">taylor</span> <span class="tok-o">=</span> <span class="tok-nx">TaylorModern</span><span class="tok-p">.</span><span class="tok-nx">getInstance</span><span class="tok-p">();</span>
+    <span class="tok-kd">var</span> <span class="tok-nx">PI</span> <span class="tok-o">=</span> <span class="tok-mf">3.14159265359</span><span class="tok-p">;</span>
 
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-o">-</span><span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mf">0.25</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mf">0.5</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-o">-</span><span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mf">0.25</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mf">0.5</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">);</span>
 
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">3</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">6</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">3</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">6</span><span class="tok-p">);</span>
 
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span> <span class="tok-o">/</span> <span class="tok-mi">4</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.707</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span> <span class="tok-o">/</span> <span class="tok-mi">3</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.866</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span> <span class="tok-o">/</span> <span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">1.0</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
-        <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
-    <span class="tok-p">});</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span> <span class="tok-o">/</span> <span class="tok-mi">4</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.707</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span> <span class="tok-o">/</span> <span class="tok-mi">3</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.866</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span> <span class="tok-o">/</span> <span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">1.0</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+  <span class="tok-p">});</span>
 <span class="tok-p">});</span></code></pre>
 </div>
 </div>
@@ -872,7 +876,9 @@ An experienced javascript developer would know this by instinct, but still fall 
 <span class="tok-cm">  ###</span>
   <span class="tok-nv">sine: </span><span class="tok-nf">(x) -&gt;</span>
     <span class="tok-nv">_this = </span><span class="tok-nx">@</span> <i class="conum" data-value="6"></i><b>(6)</b>
-    <span class="tok-nv">reducer = </span><span class="tok-nf">(sum, i) -&gt;</span> <span class="tok-nx">sum</span> <span class="tok-o">+</span> <span class="tok-nx">_this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-nx">i</span><span class="tok-p">)</span> <span class="tok-o">*</span> <span class="tok-nx">_this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">,</span> <span class="tok-nx">i</span> <span class="tok-o">*</span> <span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-o">/</span> <span class="tok-nx">_this</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-nx">i</span> <span class="tok-o">*</span> <span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">)</span> <i class="conum" data-value="7"></i><b>(7)</b>
+    <span class="tok-nv">reducer = </span><span class="tok-nf">(sum, i) -&gt;</span>
+      <span class="tok-nx">sum</span> <span class="tok-o">+</span>
+        <span class="tok-nx">_this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-nx">i</span><span class="tok-p">)</span> <span class="tok-o">*</span> <span class="tok-nx">_this</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">,</span> <span class="tok-nx">i</span> <span class="tok-o">*</span> <span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-o">/</span> <span class="tok-nx">_this</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-nx">i</span> <span class="tok-o">*</span> <span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-p">)</span> <i class="conum" data-value="7"></i><b>(7)</b>
     <span class="tok-nx">_</span><span class="tok-p">.</span><span class="tok-nx">reduce</span><span class="tok-p">(</span><span class="tok-nx">_</span><span class="tok-p">.</span><span class="tok-nx">range</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">10</span><span class="tok-p">),</span> <span class="tok-nx">reducer</span><span class="tok-p">,</span> <span class="tok-mf">0.0</span><span class="tok-p">)</span> <i class="conum" data-value="8"></i><b>(8)</b>
 
   <span class="tok-cm">###*</span>
@@ -1229,7 +1235,7 @@ outside unless we have a <code>JSApp</code> with a <code>main</code> method.</td
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-17 23:53:03 UTC
+Last updated 2016-02-18 04:16:58 UTC
 </div>
 </div>
 </body>
