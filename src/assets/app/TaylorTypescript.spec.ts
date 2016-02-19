@@ -1,6 +1,8 @@
+/// <reference path="TaylorTypescript.ts" />
+/// <reference path="../typings/jasmine/jasmine.d.ts" />
 describe('Taylor Classic Spec', function() {
   return it('calls, values and instances match', function() {
-    var taylor = TaylorClassic.getInstance();
+    var taylor = TaylorTypescript.getInstance();
     var PI = 3.14159265359;
     expect(taylor.pow(2, -2)).toBe(0.25);
     expect(taylor.pow(2, -1)).toBe(0.5);
