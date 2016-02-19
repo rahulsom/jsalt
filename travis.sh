@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 export GRADLE_OPTS="-Xmx1024m -Xms256m -XX:MaxPermSize=512m -XX:+CMSClassUnloadingEnabled"
-./gradlew demo
+./gradlew demo --stacktrace
 
 if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_REPO_SLUG == "rahulsom/jsalt" && $TRAVIS_PULL_REQUEST == 'false' ]]; then
 

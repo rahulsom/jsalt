@@ -23,7 +23,7 @@ karma {
   ]
 
   files = [
-      "build/assets/bower/**/**",
+      "build/assets/lodash/**.unminified.js",
       "build/assets/**/!(*.spec).unminified.js",
       "build/assets/**/*.spec.unminified.js"
   ]

@@ -151,5 +151,16 @@ TODO
 TODO
 
 === Typescript
-TODO
+[source,typescript]
+----
+include::../assets/app/TaylorTypescript.ts[]
+----
+<1> This is how we tell typescript where to import things
+<2> Typing is optional. There is no int, so everything is a number.
+<3> Lodash chaining does not work. It's a flaw in the `d.ts` for it.
+<4> The insane littering of `this` doesn't go away.
 
+[source,typescript]
+----
+include::../assets/app/TaylorTypescript.spec.ts[]
+----

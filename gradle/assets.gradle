@@ -5,24 +5,25 @@ assets {
 
   configOptions = [
       typeScript: [
-          module:'commonjs',
-          target:'es5',
-          experimentalDecorators:true
+          module                : 'amd',
+          target                : 'es5',
+          experimentalDecorators: true,
+          moduleResolution      : 'node'
       ]
   ]
 
   minifyOptions = [
-      languageMode: 'ES6',
-      targetLanguage: 'ES5',
+      languageMode     : 'ES6',
+      targetLanguage   : 'ES5',
       optimizationLevel: 'SIMPLE',
-      angularPass: true
+      angularPass      : true
   ]
 
   includes = ['facotiral.es5.js']
   excludes = ['bower/**']
 
   // Can add custom asset locations (directories or individual jar files)
-  from 'src/assets/bower'
+  // from 'src/assets/bower'
   from 'build/generated/js'
   // from '/path/to/file.jar'
 }
