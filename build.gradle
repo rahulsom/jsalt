@@ -23,7 +23,7 @@ apply plugin: 'idea'
 
 apply from: 'gradle/grooscript.gradle'
 apply from: 'gradle/scalajs.gradle'
-
+apply from: 'gradle/purescript.gradle'
 apply from: 'gradle/karma.gradle'
 apply from: 'gradle/assets.gradle'
 apply from: 'gradle/bower.gradle'

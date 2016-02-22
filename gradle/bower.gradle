@@ -1,4 +1,37 @@
 bower {
+  /* This is for ES5, ES6 and Coffee */
   'lodash'('4.3.0')
+
+  /* This is for purescript */
+  "purescript-console" ("^0.1.0") {source '**'}
+  "purescript-arrays" ("~0.4.4") {source '**'}
+  "purescript-integers" ("~0.2.1") {source '**'}
+  "purescript-test-unit" ("~4.1.0") {source '**'}
+
+  "purescript-math" ("^0.2.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-eff" ("^0.1.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-maybe" ("^0.3.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-either" ("~0.2.3") {source '**'} // TODO Bower Gradle Bug
+  "purescript-tuples" ("^0.4.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-prelude" ("~0.1.3") {source '**'} // TODO Bower Gradle Bug
+  "purescript-foldable-traversable" ("^0.4.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-st" ("^0.1.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-quickcheck" ("~0.12.2") {source '**'} // TODO Bower Gradle Bug
+  "purescript-aff" ("~0.13.1") {source '**'} // TODO Bower Gradle Bug
+  "purescript-monoid" ("^0.3.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-random" ("^0.2.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-exceptions" ("^0.3.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-functions" ("^0.1.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-strings" ("^0.7.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-bifunctors" ("^0.4.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-lists" ("^0.7.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-transformers" ("^0.8.1") {source '**'} // TODO Bower Gradle Bug
+  "purescript-invariant" ("^0.3.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-control" ("^0.3.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-lazy" ("^0.4.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-distributive" ("^0.5.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-unfoldable" ("^0.4.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-tailrec" ("^0.3.0") {source '**'} // TODO Bower Gradle Bug
+  "purescript-identity" ("^0.4.0") {source '**'} // TODO Bower Gradle Bug
 }
 

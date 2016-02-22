@@ -19,11 +19,20 @@ assets {
       angularPass      : true
   ]
 
-  includes = ['facotiral.es5.js']
-  excludes = ['bower/**']
+  // includes = ['facotiral.es5.js']
+  excludes = ['bower/purescript-*/**', 'purescript-*/**']
 
   // Can add custom asset locations (directories or individual jar files)
-  // from 'src/assets/bower'
   from 'build/generated/js'
   // from '/path/to/file.jar'
+}
+
+task genJsDir() {
+  def genJs = "$build/generated/js"
+  onlyIf {!file(genJs).exists()}
+  doLast {
+    if (!(file(genJs).exists())) {
+      file(genJs).mkdirs()
+    }
+  }
 }
