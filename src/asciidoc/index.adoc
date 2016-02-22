@@ -145,7 +145,37 @@ include::../test/scala/TaylorScalaSpec.scala[]
 <3> Assertions are almost as elegant as Spock.
 
 === Purescript
-TODO
+[source,haskell]
+----
+include::../main/purescript/TaylorPurescript.purs[]
+----
+<1> This line is commented out, but conventionally it would be there. It demonstrates Purescript's type inference.
+  Purely on the basis of the operations performed inside of it, it will guess exactly the same type as I had intended.
+<2> This is a function defined using guard values
+<3> This is a function defined using pattern matching
+<4> This appears necessary for the module to be taken seriously by the compiler
+<5> The commented block is better performing code. It uses tail call optimization. If you need it, you should use it.
+  TCO is almost a must-have if you want to use quickcheck
+
+[source,haskell]
+----
+include::../test/purescript/TaylorPurescriptTest.purs[]
+----
+<1> This defines a property for quickCheck
+<2> This is *quickCheck* - it runs a hundred tests with random numbers to see if the property holds true
+<3> You need ot put negative numbers into parens. It's a _haskell_ thing.
+
+However purescript doesn't generate JUnit style xml output. So we've gone ahead and put in some jasmine tests as well
+
+[source,javascript]
+----
+include::../assets/app/TaylorPurescript.spec.js[]
+----
+<1> This is how you pull in Purescript into native javascript. There is the option to use CommonJS or whatever else
+  is your favorite module system for JS, but we're keeping it simple.
+<2> This is where you blame your favorite mathematician - Gottlob Frege, Moses Schönfinkel, or Haskell Curry.
+  It is what makes sens to mathematics. And it's ugly when we take a programming language where Currying is not a first
+  class capability.
 
 === Clojurescript
 TODO

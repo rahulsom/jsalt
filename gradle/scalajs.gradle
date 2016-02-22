@@ -31,12 +31,9 @@ task scalaJsLd() {
   def genJs = "${buildDir}/generated/js"
   outputs.dir file(genJs)
   inputs.dir file(classesDir)
-  dependsOn 'compileScala'
+  dependsOn 'compileScala', 'genJsDir'
 
   doLast {
-    if (!(file(genJs).exists())) {
-      file(genJs).mkdirs()
-    }
 
     javaexec {
       classpath sourceSets.main.runtimeClasspath

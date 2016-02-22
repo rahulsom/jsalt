@@ -1,0 +1,96 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "gradle.plugin.com.craigburke.gradle:bower-installer-gradle:2.5.1"
+    }
+}
+
+import com.craigburke.gradle.*
+import groovy.json.JsonBuilder
+
+task installPurescript(type: NpmTask) {
+    args = ['install', 'purescript', 'pulp', '--save-dev']
+}
+
+task installPurescriptGlobally(type: NpmTask) {
+    args = ['install', 'purescript', 'pulp', '-g']
+}
+
+installPurescript.onlyIf {
+    !file("$projectDir/node_modules/purescript").exists() ||
+    !file("$projectDir/node_modules/pulp").exists()
+}
+
+installPurescript.shouldRunAfter 'installPurescriptGlobally'
+
+Map getDependenciesMap(List dependencies) {
+    Map bowerDependencies = [:]
+    dependencies.each { bowerDependencies[it.name] = it.version }
+    bowerDependencies
+}
+
+task bowerForPurescript() {
+    outputs.upToDateWhen {false}
+    def bowerConfig = project.extensions.bower
+    doLast {
+        file('bower.json').text = new JsonBuilder([ name: 'Purescript App', dependencies: getDependenciesMap(bowerConfig.dependencies) ])
+    }
+}
+
+task cleanBowerForPurescript() {
+    mustRunAfter 'compilePurescript', 'testPurescript'
+    doLast {
+        file('bower_components').deleteDir()
+        file('bower.json').delete()
+    }
+}
+
+task compilePurescript(type: NodeTask) {
+    mustRunAfter 'bowerForPurescript'
+    script = file("$projectDir/node_modules/pulp/pulp.js")
+    args = [
+            'build',
+            '--build-path', "$buildDir/generated/purs",
+            '--src-path', 'src/main/purescript',
+            '--dependency-path', 'src/assets/bower',
+            '--main', 'TaylorPurescript',
+            '--to', "$buildDir/generated/js/${project.name}.purescript.js"
+    ]
+
+    doFirst {
+        if (!file("$buildDir/generated/js").exists()) {
+            file("$buildDir/generated/js").mkdirs()
+        }
+    }
+
+    finalizedBy 'cleanBowerForPurescript'
+}
+
+task testPurescript(type: NodeTask) {
+    mustRunAfter 'bowerForPurescript'
+    script = file("$projectDir/node_modules/pulp/pulp.js")
+    args = [
+            'test',
+            '--build-path', "$buildDir/generated/purs",
+            '--src-path', 'src/main/purescript',
+            '--test-path', 'src/test/purescript',
+            '--dependency-path', 'src/assets/bower'
+    ]
+
+    doFirst {
+        if (!file("$buildDir/generated/js").exists()) {
+            file("$buildDir/generated/js").mkdirs()
+        }
+    }
+
+    finalizedBy 'cleanBowerForPurescript'
+
+}
+
+compilePurescript.dependsOn 'installPurescript', 'bowerForPurescript'
+testPurescript.dependsOn 'installPurescript', 'bowerForPurescript'
+assetCompile.dependsOn 'compilePurescript', 'testPurescript'
