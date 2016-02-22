@@ -1214,8 +1214,192 @@ outside unless we have a <code>JSApp</code> with a <code>main</code> method.</td
 </div>
 <div class="sect2">
 <h3 id="_purescript">Purescript</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="haskell"><span class="tok-kr">module</span> <span class="tok-nn">TaylorPurescript</span> <span class="tok-kr">where</span>
+
+<span class="tok-kr">import</span> <span class="tok-nn">Prelude</span>
+<span class="tok-kr">import</span> <span class="tok-nn">Data.Foldable</span> <span class="tok-p">(</span><span class="tok-nf">foldl</span><span class="tok-p">)</span>
+<span class="tok-kr">import</span> <span class="tok-nn">Data.Array</span> <span class="tok-p">((</span><span class="tok-o">..</span><span class="tok-p">))</span>
+<span class="tok-kr">import</span> <span class="tok-nn">Data.Int</span> <span class="tok-p">(</span><span class="tok-nf">toNumber</span><span class="tok-p">)</span>
+<span class="tok-kr">import</span> <span class="tok-nn">Control.Monad.Eff.Console</span> <span class="tok-p">(</span><span class="tok-nf">log</span><span class="tok-p">)</span>
+
+<span class="tok-c1">--powImpl       :: Number -&gt; Int -&gt; Number -&gt; Number </span><i class="conum" data-value="5"></i><b>(5)</b>
+<span class="tok-c1">--powImpl num p accum</span>
+<span class="tok-c1">--  | p == 0    = accum</span>
+<span class="tok-c1">--  | p &gt; 0     = powImpl num (p-1) (accum * num)</span>
+<span class="tok-c1">--  | otherwise = powImpl num (p+1) (accum / num)</span>
+<span class="tok-c1">--</span>
+<span class="tok-c1">---- pow  :: Number -&gt; Int -&gt; Number</span>
+<span class="tok-c1">--pow num p     = powImpl num p 1.0</span>
+<span class="tok-c1">--</span>
+<span class="tok-c1">--factImpl      :: Int -&gt; Number -&gt; Number</span>
+<span class="tok-c1">--factImpl n accum</span>
+<span class="tok-c1">--  | n == 0    = accum</span>
+<span class="tok-c1">--  | n &gt; 0     = factImpl (n-1) (accum * toNumber n)</span>
+<span class="tok-c1">--</span>
+<span class="tok-c1">---- fact :: Int -&gt; Number</span>
+<span class="tok-c1">--fact n = factImpl n 1.0</span>
+<span class="tok-c1">--</span>
+
+<span class="tok-c1">-- pow  :: Number -&gt; Int -&gt; Number </span><i class="conum" data-value="1"></i><b>(1)</b>
+<span class="tok-nf">pow</span> <span class="tok-n">num</span> <span class="tok-n">p</span>  <i class="conum" data-value="2"></i><b>(2)</b>
+  <span class="tok-o">|</span> <span class="tok-n">p</span> <span class="tok-o">==</span> <span class="tok-mi">0</span>    <span class="tok-ow">=</span> <span class="tok-mf">1.0</span>
+  <span class="tok-o">|</span> <span class="tok-n">p</span> <span class="tok-o">&gt;</span> <span class="tok-mi">0</span>     <span class="tok-ow">=</span> <span class="tok-n">num</span>     <span class="tok-o">*</span> <span class="tok-n">pow</span> <span class="tok-n">num</span> <span class="tok-p">(</span><span class="tok-n">p</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)</span>
+  <span class="tok-o">|</span> <span class="tok-n">otherwise</span> <span class="tok-ow">=</span> <span class="tok-mf">1.0</span><span class="tok-o">/</span><span class="tok-n">num</span> <span class="tok-o">*</span> <span class="tok-n">pow</span> <span class="tok-n">num</span> <span class="tok-p">(</span><span class="tok-n">p</span><span class="tok-o">+</span><span class="tok-mi">1</span><span class="tok-p">)</span>
+
+<span class="tok-c1">-- fact :: Int -&gt; Number</span>
+<span class="tok-nf">fact</span> <span class="tok-mi">0</span> <span class="tok-ow">=</span> <span class="tok-mf">1.0</span> <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="tok-nf">fact</span> <span class="tok-n">n</span> <span class="tok-ow">=</span> <span class="tok-n">toNumber</span> <span class="tok-p">(</span><span class="tok-n">n</span><span class="tok-p">)</span> <span class="tok-o">*</span> <span class="tok-n">fact</span><span class="tok-p">(</span><span class="tok-n">n</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)</span>
+
+<span class="tok-c1">-- sine :: Number -&gt; Number</span>
+<span class="tok-nf">sine</span> <span class="tok-n">x</span> <span class="tok-ow">=</span> <span class="tok-n">foldl</span> <span class="tok-p">(</span><span class="tok-o">+</span><span class="tok-p">)</span> <span class="tok-mf">0.0</span> <span class="tok-o">$</span> <span class="tok-n">map</span> <span class="tok-n">f</span> <span class="tok-p">(</span><span class="tok-mi">0</span> <span class="tok-o">..</span> <span class="tok-mi">10</span><span class="tok-p">)</span> <span class="tok-kr">where</span>
+    <span class="tok-n">f</span> <span class="tok-n">i</span> <span class="tok-ow">=</span> <span class="tok-n">pow</span> <span class="tok-p">(</span><span class="tok-o">-</span><span class="tok-mf">1.0</span><span class="tok-p">)</span> <span class="tok-n">i</span> <span class="tok-o">*</span> <span class="tok-n">pow</span> <span class="tok-n">x</span> <span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-o">*</span><span class="tok-mi">2</span><span class="tok-o">+</span><span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-o">/</span> <span class="tok-n">fact</span> <span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-o">*</span><span class="tok-mi">2</span><span class="tok-o">+</span><span class="tok-mi">1</span><span class="tok-p">)</span>
+
+<span class="tok-nf">main</span> <span class="tok-ow">=</span> <span class="tok-n">log</span> <span class="tok-s">&quot;Hello&quot;</span> <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This line is commented out, but conventionally it would be there. It demonstrates Purescript&#8217;s type inference.
+Purely on the basis of the operations performed inside of it, it will guess exactly the same type as I had intended.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>This is a function defined using guard values</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>This is a function defined using pattern matching</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>This appears necessary for the module to be taken seriously by the compiler</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The commented block is better performing code. It uses tail call optimization. If you need it, you should use it.
+TCO is almost a must-have if you want to use quickcheck</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="haskell"><span class="tok-kr">module</span> <span class="tok-nn">Test.Main</span> <span class="tok-kr">where</span>
+
+<span class="tok-kr">import</span> <span class="tok-nn">TaylorPurescript</span>
+<span class="tok-kr">import</span> <span class="tok-nn">Math</span> <span class="tok-p">(</span><span class="tok-nf">abs</span><span class="tok-p">)</span>
+<span class="tok-kr">import</span> <span class="tok-nn">Prelude</span>
+<span class="tok-kr">import</span> <span class="tok-nn">Control.Monad.Eff</span>
+<span class="tok-kr">import</span> <span class="tok-nn">Control.Monad.Eff.Console</span>
+<span class="tok-kr">import</span> <span class="tok-nn">Data.Int</span> <span class="tok-p">(</span><span class="tok-nf">toNumber</span><span class="tok-p">,</span> <span class="tok-nf">round</span><span class="tok-p">)</span>
+
+
+<span class="tok-kr">import</span> <span class="tok-nn">Test.Unit</span> <span class="tok-p">(</span><span class="tok-nf">test</span><span class="tok-p">,</span> <span class="tok-nf">runTest</span><span class="tok-p">)</span>
+<span class="tok-kr">import</span> <span class="tok-nn">Test.Unit.QuickCheck</span> <span class="tok-p">(</span><span class="tok-nf">quickCheck</span><span class="tok-p">)</span>
+<span class="tok-kr">import</span> <span class="tok-nn">Test.QuickCheck</span> <span class="tok-p">(</span><span class="tok-kt">Result</span><span class="tok-p">(),</span> <span class="tok-p">(</span><span class="tok-o">===</span><span class="tok-p">))</span>
+<span class="tok-kr">import</span> <span class="tok-nn">Test.Unit.Assert</span> <span class="tok-k">as</span> <span class="tok-n">Assert</span>
+
+<span class="tok-c1">-- pi :: Number</span>
+<span class="tok-nf">pi</span> <span class="tok-ow">=</span> <span class="tok-mf">3.14159265359</span>
+
+<span class="tok-c1">--powersCascade :: Number -&gt; Int -&gt; Result </span><i class="conum" data-value="1"></i><b>(1)</b>
+<span class="tok-c1">--powersCascade a b = (pow a (b+1)) === ((pow a b)*a)</span>
+<span class="tok-c1">--</span>
+<span class="tok-c1">--factsCascade :: Int -&gt; Result</span>
+<span class="tok-c1">--factsCascade a = (fact (b+1)) === (fact b * toNumber(b+1)) where</span>
+<span class="tok-c1">--  b = round $ abs $ toNumber a</span>
+<span class="tok-c1">--</span>
+<span class="tok-nf">main</span> <span class="tok-ow">=</span> <span class="tok-n">runTest</span> <span class="tok-kr">do</span>
+<span class="tok-c1">--  test &quot;quickCheck pow function&quot; do</span>
+<span class="tok-c1">--    quickCheck powersCascade </span><i class="conum" data-value="2"></i><b>(2)</b>
+<span class="tok-c1">--</span>
+<span class="tok-c1">--  test &quot;quickCheck fact function&quot; do</span>
+<span class="tok-c1">--    quickCheck factsCascade</span>
+<span class="tok-c1">--</span>
+  <span class="tok-n">test</span> <span class="tok-s">&quot;the pow function&quot;</span> <span class="tok-kr">do</span>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">equal</span> <span class="tok-p">(</span><span class="tok-n">pow</span> <span class="tok-mf">2.0</span> <span class="tok-p">(</span><span class="tok-o">-</span><span class="tok-mi">2</span><span class="tok-p">))</span> <span class="tok-mf">0.25</span> <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">equal</span> <span class="tok-p">(</span><span class="tok-n">pow</span> <span class="tok-mf">2.0</span> <span class="tok-p">(</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">))</span> <span class="tok-mf">0.5</span>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">equal</span> <span class="tok-p">(</span><span class="tok-n">pow</span> <span class="tok-mf">2.0</span> <span class="tok-mi">0</span><span class="tok-p">)</span>    <span class="tok-mf">1.0</span>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">equal</span> <span class="tok-p">(</span><span class="tok-n">pow</span> <span class="tok-mf">2.0</span> <span class="tok-mi">1</span><span class="tok-p">)</span>    <span class="tok-mf">2.0</span>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">equal</span> <span class="tok-p">(</span><span class="tok-n">pow</span> <span class="tok-mf">2.0</span> <span class="tok-mi">2</span><span class="tok-p">)</span>    <span class="tok-mf">4.0</span>
+  <span class="tok-n">test</span> <span class="tok-s">&quot;the fact function&quot;</span> <span class="tok-kr">do</span>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">equal</span> <span class="tok-p">(</span><span class="tok-n">fact</span> <span class="tok-mi">0</span><span class="tok-p">)</span> <span class="tok-mf">1.0</span>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">equal</span> <span class="tok-p">(</span><span class="tok-n">fact</span> <span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-mf">1.0</span>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">equal</span> <span class="tok-p">(</span><span class="tok-n">fact</span> <span class="tok-mi">2</span><span class="tok-p">)</span> <span class="tok-mf">2.0</span>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">equal</span> <span class="tok-p">(</span><span class="tok-n">fact</span> <span class="tok-mi">3</span><span class="tok-p">)</span> <span class="tok-mf">6.0</span>
+  <span class="tok-n">test</span> <span class="tok-s">&quot;the sine function&quot;</span> <span class="tok-kr">do</span>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">equal</span> <span class="tok-p">(</span><span class="tok-n">sine</span> <span class="tok-mf">0.0</span><span class="tok-p">)</span>      <span class="tok-mf">0.0</span>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">assert</span> <span class="tok-s">&quot;sin pi/4 ~= 0.707&quot;</span> <span class="tok-o">$</span> <span class="tok-p">(</span><span class="tok-n">sine</span> <span class="tok-p">(</span><span class="tok-n">pi</span><span class="tok-o">/</span><span class="tok-mf">4.0</span><span class="tok-p">))</span> <span class="tok-o">&gt;</span> <span class="tok-mf">0.707</span>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">assert</span> <span class="tok-s">&quot;sin pi/4 ~= 0.707&quot;</span> <span class="tok-o">$</span> <span class="tok-p">(</span><span class="tok-n">sine</span> <span class="tok-p">(</span><span class="tok-n">pi</span><span class="tok-o">/</span><span class="tok-mf">4.0</span><span class="tok-p">))</span> <span class="tok-o">&lt;</span> <span class="tok-mf">0.708</span>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">assert</span> <span class="tok-s">&quot;sin pi/3 ~= 0.866&quot;</span> <span class="tok-o">$</span> <span class="tok-p">(</span><span class="tok-n">sine</span> <span class="tok-p">(</span><span class="tok-n">pi</span><span class="tok-o">/</span><span class="tok-mf">3.0</span><span class="tok-p">))</span> <span class="tok-o">&gt;</span> <span class="tok-mf">0.866</span>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">assert</span> <span class="tok-s">&quot;sin pi/3 ~= 0.866&quot;</span> <span class="tok-o">$</span> <span class="tok-p">(</span><span class="tok-n">sine</span> <span class="tok-p">(</span><span class="tok-n">pi</span><span class="tok-o">/</span><span class="tok-mf">3.0</span><span class="tok-p">))</span> <span class="tok-o">&lt;</span> <span class="tok-mf">0.869</span>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">assert</span> <span class="tok-s">&quot;sin pi/2 ~= 0.707&quot;</span> <span class="tok-o">$</span> <span class="tok-p">(</span><span class="tok-n">sine</span> <span class="tok-p">(</span><span class="tok-n">pi</span><span class="tok-o">/</span><span class="tok-mf">2.0</span><span class="tok-p">))</span> <span class="tok-o">&gt;</span> <span class="tok-mf">0.999</span>
+    <span class="tok-kt">Assert</span><span class="tok-o">.</span><span class="tok-n">assert</span> <span class="tok-s">&quot;sin pi/2 ~= 0.707&quot;</span> <span class="tok-o">$</span> <span class="tok-p">(</span><span class="tok-n">sine</span> <span class="tok-p">(</span><span class="tok-n">pi</span><span class="tok-o">/</span><span class="tok-mf">2.0</span><span class="tok-p">))</span> <span class="tok-o">&lt;</span> <span class="tok-mf">1.001</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This defines a property for quickCheck</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>This is <strong>quickCheck</strong> - it runs a hundred tests with random numbers to see if the property holds true</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>You need ot put negative numbers into parens. It&#8217;s a <em>haskell</em> thing.</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>TODO</p>
+<p>However purescript doesn&#8217;t generate JUnit style xml output. So we&#8217;ve gone ahead and put in some jasmine tests as well</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-nx">describe</span><span class="tok-p">(</span><span class="tok-s1">&#39;Taylor Purescript Spec&#39;</span><span class="tok-p">,</span> <span class="tok-kd">function</span> <span class="tok-p">()</span> <span class="tok-p">{</span>
+  <span class="tok-k">return</span> <span class="tok-nx">it</span><span class="tok-p">(</span><span class="tok-s1">&#39;calls, values and instances match&#39;</span><span class="tok-p">,</span> <span class="tok-kd">function</span> <span class="tok-p">()</span> <span class="tok-p">{</span>
+    <span class="tok-kd">var</span> <span class="tok-nx">taylor</span> <span class="tok-o">=</span> <span class="tok-nx">PS</span><span class="tok-p">.</span><span class="tok-nx">TaylorPurescript</span><span class="tok-p">;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tok-kd">var</span> <span class="tok-nx">PI</span> <span class="tok-o">=</span> <span class="tok-mf">3.14159265359</span><span class="tok-p">;</span>
+
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">)(</span><span class="tok-o">-</span><span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mf">0.25</span><span class="tok-p">);</span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">)(</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mf">0.5</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">)(</span><span class="tok-mi">0</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">)(</span><span class="tok-mi">1</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">pow</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">)(</span><span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">);</span>
+
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">fact</span><span class="tok-p">(</span><span class="tok-mi">3</span><span class="tok-p">)).</span><span class="tok-nx">toBe</span><span class="tok-p">(</span><span class="tok-mi">6</span><span class="tok-p">);</span>
+
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span> <span class="tok-o">/</span> <span class="tok-mi">4</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.707</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span> <span class="tok-o">/</span> <span class="tok-mi">3</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.866</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span> <span class="tok-o">/</span> <span class="tok-mi">2</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">1.0</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+    <span class="tok-nx">expect</span><span class="tok-p">(</span><span class="tok-nx">taylor</span><span class="tok-p">.</span><span class="tok-nx">sine</span><span class="tok-p">(</span><span class="tok-nx">PI</span><span class="tok-p">)).</span><span class="tok-nx">toBeCloseTo</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+  <span class="tok-p">});</span>
+<span class="tok-p">});</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This is how you pull in Purescript into native javascript. There is the option to use CommonJS or whatever else
+is your favorite module system for JS, but we&#8217;re keeping it simple.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>This is where you blame your favorite mathematician - Gottlob Frege, Moses Schönfinkel, or Haskell Curry.
+It is what makes sens to mathematics. And it&#8217;s ugly when we take a programming language where Currying is not a first
+class capability.</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -1325,7 +1509,7 @@ outside unless we have a <code>JSApp</code> with a <code>main</code> method.</td
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-19 06:24:02 UTC
+Last updated 2016-02-22 19:37:24 UTC
 </div>
 </div>
 </body>
