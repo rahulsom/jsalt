@@ -6,3 +6,8 @@ env:
   - GIT_NAME="Rahul Somasunderam"
   - GIT_EMAIL="rahul.som@gmail.com"
   - secure: bJV+7o6PeFZaRqWY6cTmZM7K916OhpvIovh739SS1ClabWT3PGEziwwQLjGtA9V05LVKktaoaDAwthJHub2OGZQulDUY8QukBSufeUUFhccoOeFpW7pZhTO+Ofpgrx7+rOTcyFWMw7lIcZd10fnzT4iyLNMMe88lP8C3VFzgmCAGTv3a0RLdTJZXEttUmCh+ta1McPhZeu/YWu6OhNgXW6na6zls2mGhZA9sxcVbmajxEYTLppNZstqYV+znnSVaPHP41ACia8lHkSi5Y9rB2AtOKf6abb0rz/w0wuDFHdIqJpNCkn8M63kpUiApLPqLRQSRMhFJyyQrXOAGI95JmLMQHiaQHbdrhjAy0wBeMs6DCTa1dIht5Lw/quj9UZgfIj/989iF0ZEmCcLjSrl6rV8gqmrfN4EmC5+FCGwTG3xudifxj7Z05py2SyXi4bmn5Tci++uAHXpAabRM7QeU/qHgKrDXXH5L2IhFiVaLL18qnyPGyObePQucFfUN6TdX8t3nPWQHXUXnbq8KYHN41CEYIsOrk7f59EA5prAuPPQOE0+yG4/7JMZdK/aWgL6plelGrhqw7XSWoqUGSDpG/dG4M4vgbLyG8b3EtXS4WBvNn2g7EDSQYeszT7EtFMZMJyuQLtrKOYG2GmU/tIO2jey7kDGynxz5RxW3SVHq8Xw=
+cache:
+  directories:
+  - "$HOME/.m2"
+  - "$HOME/.gradle"
+  - "node_modules"
