@@ -27,6 +27,7 @@ apply from: 'gradle/purescript.gradle'
 apply from: 'gradle/karma.gradle'
 apply from: 'gradle/assets.gradle'
 apply from: 'gradle/bower.gradle'
+apply from: 'gradle/cljs.gradle'
 
 repositories {
   jcenter()
@@ -41,10 +42,9 @@ dependencies {
 
   testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
   testCompile 'org.scalatest:scalatest_2.11:2.2.6'
-
 }
 
-assetCompile.dependsOn 'scalaJsLd'
+assetCompile.dependsOn 'scalaJsLd', 'compileCljs'
 task demo() {
   dependsOn 'scalaJsLd', 'test', 'convert', 'assetClean', 'assetCompile', 'karmaRun', 'asciidoctor'
 }

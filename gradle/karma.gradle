@@ -22,6 +22,10 @@ karma {
       ]
   ]
 
+//  dependencies([
+//      'karma-chrome-launcher'
+//  ])
+
   files = [
       "build/assets/lodash/**.unminified.js",
       "build/assets/**/!(*.spec).unminified.js",

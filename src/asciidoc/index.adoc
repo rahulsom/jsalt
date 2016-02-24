@@ -178,7 +178,13 @@ include::../assets/app/TaylorPurescript.spec.js[]
   class capability.
 
 === Clojurescript
-TODO
+[source,clojure]
+----
+include::../main/cljs/TaylorClojure.cljs[]
+----
+<1> The `^:export` is required to ensure the name remains the same
+<2> Everything is in prefix notation. No infix.
+<3> Clojure has partial functions. Not currying.
 
 === Typescript
 [source,typescript]

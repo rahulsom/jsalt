@@ -67,6 +67,10 @@ task compilePurescript(type: NodeTask) {
         }
     }
 
+    execOverrides {
+        it.errorOutput = new FileOutputStream('build/compilePurescript.err.log')
+    }
+
     finalizedBy 'cleanBowerForPurescript'
 }
 
@@ -85,6 +89,10 @@ task testPurescript(type: NodeTask) {
         if (!file("$buildDir/generated/js").exists()) {
             file("$buildDir/generated/js").mkdirs()
         }
+    }
+
+    execOverrides {
+        it.errorOutput = new FileOutputStream('build/testPurescript.err.log')
     }
 
     finalizedBy 'cleanBowerForPurescript'
