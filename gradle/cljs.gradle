@@ -1,0 +1,15 @@
+configurations {
+    cljs
+}
+
+dependencies {
+    compile 'org.clojure:clojurescript:1.7.228'
+    cljs 'org.clojure:clojurescript:1.7.228'
+}
+
+task compileCljs(type: JavaExec){
+    classpath configurations.cljs
+    classpath file('src/main/cljs')
+    main = 'clojure.main'
+    args = ['build.clj']
+}

@@ -1,5 +1,6 @@
 = JS/Alt
 Rahul Somasunderam
+:icons: font
 
 This is a comparison of various javascript alternatives for some very small problems. The idea is if we fairly
 compare all these languages, we can choose a suitable language for a given purpose.
@@ -12,20 +13,52 @@ Image from https://hakanforss.wordpress.com/2014/03/10/are-you-too-busy-to-impro
 
 == Problems solved
 
-- [x] Computing the sine of an angle using Taylor Series
-- [ ] Templating strings
-- [ ] Managing types
 
-== Languages Used
+.Table title
+|===
+|Language |Taylor Series |Templating |Type System
 
-- [x] Javascript ES5
-- [x] Javascript ES6
-- [x] Coffeescript
-- [x] Grooscript
-- [x] Scala.js
-- [ ] Purescript
-- [ ] Clojurescript
-- [ ] Typescript
+|Javascript ES5
+a|icon:check[]
+|
+|
+
+|Javascript ES6
+a|icon:check[]
+|
+|
+
+|Coffeescript
+a|icon:check[]
+|
+|
+
+|Grooscript
+a|icon:check[]
+|
+|
+
+|Scala.js
+a|icon:check[]
+|
+|
+
+|Purescript
+a|icon:check[]
+|
+|
+
+|Clojurescript
+a|icon:check[]
+|
+|
+
+|Typescript
+a|icon:check[]
+|
+|
+
+|===
 
 == Contributing
 
