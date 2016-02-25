@@ -9,6 +9,8 @@ I found myself cursing every time I needed to do some very basic tasks.
 Most of this led back to a rather old decision to not use transpilers when we started our very first SPA.
 This project is an attempt to find out what we could be doing instead of fighting hard against javascript.
 
+The source and the changelog can be found at https://github.com/rahulsom/jsalt/
+
 == The problems
 
 * Javascript pretends to be a functional language
