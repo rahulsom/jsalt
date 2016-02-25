@@ -8,6 +8,8 @@ In talking to a lot of Javascript developers over the course of the last few mon
 I found myself cursing every time I needed to do some very basic tasks.
 This project is an attempt to find out what we could be doing instead of fighting hard against javascript.
 
+The source and the changelog can be found at https://github.com/rahulsom/jsalt/
+
 == The problems
 
 * Javascript pretends to be a functional language

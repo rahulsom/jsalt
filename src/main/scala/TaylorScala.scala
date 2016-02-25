@@ -19,12 +19,6 @@ class TaylorScala {
 
 @JSExport // <6>
 object TaylorScala {
-  private var instance: TaylorScala = null
-
-  def getInstance() = { // <7>
-    if (instance == null) {
-      instance = new TaylorScala
-    }
-    instance
-  }
+  private lazy val instance = new TaylorScala
+  def getInstance = instance // <7>
 }

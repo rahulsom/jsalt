@@ -8,7 +8,7 @@ import org.scalatest.junit.JUnitRunner
 class TaylorScalaSpec extends FunSuite {
   final val PI = 3.14159265359
   test("calls, values and instances match") {
-    val taylor = TaylorScala.getInstance()
+    val taylor = TaylorScala.getInstance
     assert(taylor.pow(2, -2) == 0.25) // <3>
     assert(taylor.pow(2, -1) == 0.5)
     assert(taylor.pow(2, 0) == 1)
