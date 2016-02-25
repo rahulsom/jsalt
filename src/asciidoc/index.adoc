@@ -6,7 +6,6 @@ Rahul Somasunderam
 
 In talking to a lot of Javascript developers over the course of the last few months, I learnt that most hated the limits placed on them by javascript.
 I found myself cursing every time I needed to do some very basic tasks.
-Most of this led back to a rather old decision to not use transpilers when we started our very first SPA.
 This project is an attempt to find out what we could be doing instead of fighting hard against javascript.
 
 == The problems
@@ -14,8 +13,8 @@ This project is an attempt to find out what we could be doing instead of fightin
 * Javascript pretends to be a functional language
 * Javascript pretends to be an object oriented language
 * Javascript was introduced in 1995, and has never broken backwards compatibility.
-    _Even when bad decisions were made._
 * Javascript has [line-through]#optional# **no** typing.
+* Newer versions of the spec aren't fully supported by browsers.
 
 == The use cases
 
@@ -174,7 +173,7 @@ include::../assets/app/TaylorPurescript.spec.js[]
 <1> This is how you pull in Purescript into native javascript. There is the option to use CommonJS or whatever else
   is your favorite module system for JS, but we're keeping it simple.
 <2> This is where you blame your favorite mathematician - Gottlob Frege, Moses Schönfinkel, or Haskell Curry.
-  It is what makes sens to mathematics. And it's ugly when we take a programming language where Currying is not a first
+  It is what makes sense to mathematics. And it's ugly when we take a programming language where Currying is not a first
   class capability.
 
 === Clojurescript
