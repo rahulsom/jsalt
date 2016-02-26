@@ -27,8 +27,8 @@ import Control.Monad.Eff.Console (log)
 -- pow  :: Number -> Int -> Number -- <1>
 pow num p  -- <2>
   | p == 0    = 1.0
-  | p > 0     = num     * pow num (p-1)
-  | otherwise = 1.0/num * pow num (p+1)
+  | p > 0     = pow num (p-1) * num
+  | otherwise = pow num (p+1) / num
 
 -- fact :: Int -> Number
 fact 0 = 1.0 -- <3>

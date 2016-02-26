@@ -1,8 +1,7 @@
 (ns jsalt.core)
 
 (defn ^:export fact [x] ; <1>
-  (if (<= x 1) 1 ; <2>
-    (* x (fact (- x 1)))))
+  (reduce * (map inc (range x))))
 (defn ^:export pow [x n]
   (if (zero? n) 1
     (if (< n 0)
